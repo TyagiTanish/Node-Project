@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const encrypt = require("./pre/save");
+// const methods = require("./methods");
+
 const userSchema = new mongoose.Schema(
   {
     Name: {
@@ -10,11 +13,16 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     Phone: {
-      type: Number,
+      type: String,
+      required: true,
+    },
+    Password: {
+      type: String,
       required: true,
     },
   },
   { timestamps: true }
 );
-const userDetails = mongoose.model("UserDetails", userSchema);
+userSchema.pre("save", encrypt);
+const userDetails = mongoose.model("userdetails", userSchema);
 module.exports = userDetails;

@@ -3,9 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const cors = require("cors");
-
-dotenv.config();
-
+const connect = require("./db/connect");
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
@@ -16,6 +14,8 @@ const corsOptions = {
     "Access-Control-Allow-Credentials",
   ],
 };
+
+connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
