@@ -4,6 +4,9 @@ const bodyParser = require("body-parser");
 const routes = require("./routes");
 const cors = require("cors");
 
+const connect = require("./db/connect");
+
+
 
 
 const corsOptions = {
@@ -16,6 +19,8 @@ const corsOptions = {
     "Access-Control-Allow-Credentials",
   ],
 };
+
+connect();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
