@@ -5,3 +5,6 @@ const user = require("./User");
 
 router.use("/auth", authentication);
 router.use("/userLogin", user);
+router.use('/auth',authentication);
+module.exports = router
+
