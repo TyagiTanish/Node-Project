@@ -22,6 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 app.use("/", routes);
 
-app.listen(5000, () => {
-  console.log("Listening on port 5000....");
+app.listen(8000, () => {
+  console.log("Listening on port 8000....");
 });
