@@ -6,9 +6,6 @@ const cors = require("cors");
 
 const connect = require("./db/connect");
 
-
-
-
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
