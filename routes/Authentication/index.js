@@ -1,0 +1,1 @@
+const authenticateUser = require('./auth');
