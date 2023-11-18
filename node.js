@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const cors = require("cors");
-
+const connect = require('./db/connect')
 
 
 const corsOptions = {
@@ -21,6 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 app.use("/", routes);
+
+connect();
 
 app.listen(8000, () => {
   console.log("Listening on port 8000....");
