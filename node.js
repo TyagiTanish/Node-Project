@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const routes = require("./routes");
 const cors = require("cors");
 
-dotenv.config();
+
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -22,6 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 app.use("/", routes);
 
-app.listen(5000, () => {
-  console.log("Listening on port 5000....");
+app.listen(8000, () => {
+  console.log("Listening on port 8000....");
 });
