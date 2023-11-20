@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const encrypt = require("./pre/save");
 // const methods = require("./methods");
-
+const methods = require('./methods')
 const userSchema = new mongoose.Schema(
   {
     Name: {
@@ -23,6 +23,9 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+Object.assign(userSchema.methods, methods);
 userSchema.pre("save", encrypt);
+
 const userDetails = mongoose.model("userdetails", userSchema);
 module.exports = userDetails;
