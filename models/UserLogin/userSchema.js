@@ -4,19 +4,19 @@ const encrypt = require("./pre/save");
 const methods = require('./methods')
 const userSchema = new mongoose.Schema(
   {
-    Name: {
+    name: {
       type: String,
       required: true,
     },
-    Email: {
+    email: {
       type: String,
       required: true,
     },
-    Phone: {
+    phone: {
       type: String,
       required: true,
     },
-    Password: {
+    password: {
       type: String,
       required: true,
     },
