@@ -4,15 +4,15 @@ const bcrypt = require("bcrypt");
 module.exports = async (req, res) => {
   try {
     if (!req.body.password) {
-      const result = await userDetails.findOne({ Email: req.body.Email });
+      const result = await userDetails.findOne({ email: req.body.email });
       res.send(result);
     } else {
       const loginCred = new userDetails({
-        Email: req.body.Email,
-        Password: req.body.password,
+        email: req.body.email,
+        password: req.body.password,
       });
-      const result = await userDetails.findOne({ Email: loginCred.Email });
-      const compare = await bcrypt.compare(loginCred.Password, result.Password);
+      const result = await userDetails.findOne({ email: loginCred.email });
+      const compare = await bcrypt.compare(loginCred.password, result.password);
       if (compare) {
         const token = await loginCred.genToken(result._id);
         res.send({ token: token, data: result });
