@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role:{
+      type:String,
+    },
+    hotels:[{
+      type:Object,
+      required:false    }]
+    
+    
   },
   { timestamps: true }
 );
