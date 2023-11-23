@@ -22,12 +22,7 @@ const userSchema = new mongoose.Schema(
     },
     role:{
       type:String,
-    },
-    hotels:[{
-      type:Object,
-      required:false    }]
-    
-    
+    }
   },
   { timestamps: true }
 );
