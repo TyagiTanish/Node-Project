@@ -5,6 +5,10 @@ const routes = require("./routes");
 const cors = require("cors");
 const dotenv = require('dotenv')
 const connect = require("./db/connect");
+const multer = require('multer')
+const memberRegister = require('./routes/User/member/post/post')
+
+
 
 dotenv.config()
 const corsOptions = {
@@ -18,11 +22,29 @@ const corsOptions = {
   ],
 };
 
+const storage = multer.diskStorage({
+  destination: function (req, files, cb) {
+    let fileLocation = "./Images/";
+    // let fileLocation = "/home/prologic/Documents";
+    cb(null, fileLocation);
+  },
+  filename: function (req, files, cb) {
+    let fileName = Date.now() + files.originalname;
+    cb(null, fileName);
+  },
+});
 
+const upload = multer({
+  storage: storage,
+});
+
+
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 app.use("/", routes);
+app.post('/registerMember',upload.array('files'),memberRegister)
 
 connect();
 
