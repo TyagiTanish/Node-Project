@@ -3,14 +3,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const cors = require("cors");
-const dotenv = require('dotenv')
+const dotenv = require("dotenv");
 const connect = require("./db/connect");
-const multer = require('multer')
-const memberRegister = require('./routes/User/member/post/post')
+const multer = require("multer");
+const memberRegister = require("./routes/User/member/post/post");
+const addHotel = require("./routes/User/member/addHotel");
 
-
-
-dotenv.config()
+dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
@@ -38,14 +37,13 @@ const upload = multer({
   storage: storage,
 });
 
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 app.use("/", routes);
-app.post('/registerMember',upload.array('files'),memberRegister)
-
+app.post("/registerMember", upload.array("files"), memberRegister);
+app.post("/addHotel", upload.array("files"), addHotel);
 connect();
 
 app.listen(8000, () => {
