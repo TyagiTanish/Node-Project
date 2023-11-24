@@ -1,44 +1,45 @@
 const mongoose = require("mongoose");
 const hotelSchema = new mongoose.Schema(
   {
-    ownerId: {
-      type: String,
-      required: true,
+    ownerId:{
+      type:String,
+      required:true
     },
     hotelName: {
       type: String,
       required: true,
     },
 
-    location: {
-      latitude: {
-        type: String,
-        required: true,
+    location: 
+      {
+        latitude: {
+          type: String,
+          required: true,
+        },
+        longitude: {
+          type: String,
+          required: true,
+        },
       },
-      longitude: {
-        type: String,
-        required: true,
-      },
-    },
     photo: {
       type: String,
       required: true,
     },
-    city: {
-      type: String,
-      required: true,
+    city:{
+      type:String,
+      required:true,
     },
-    state: {
-      type: String,
-      required: true,
+    state:{
+      type:String,
+      required:true,
     },
-    country: {
-      type: String,
-      required: true,
+    country:{
+      type:String,
+      required:true,
     },
-    pinCode: {
-      type: String,
-      required: true,
+    pinCode:{
+type:String,
+required:true,
     },
     rooms: [
       {
