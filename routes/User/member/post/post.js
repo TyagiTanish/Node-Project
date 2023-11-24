@@ -10,7 +10,6 @@ module.exports = async (req,res) => {
     role:'member',
 
 })
-console.log("hello");
 user.save();
     const data = new hotelDetails({
         ownerId:user._id,
