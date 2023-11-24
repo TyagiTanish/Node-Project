@@ -5,28 +5,26 @@ const post = async (req, res) => {
     const role = "member";
     const email = req.body.email;
     const data = await userSchema.findOne({ email: email });
-    const result = await new hotelSchema({
-      ownerId: data._id,
-      hotelName: req.body.hotelName,
-      phone: req.body.phone,
-      password: req.body.password,
-      city: req.body.city,
-      pinCode: req.body.postalCode,
-      country: req.body.country,
-      photo: req.files.path,
-      location: { latitude: req.body.lat, longitude: req.body.lng },
-    });
-    // console.log(req.files, req.body);
-    const putData = await userSchema.findByIdAndUpdate(data._id, {
-      role: role,
-    });
-    console.log(result, putData);
-    // if (data) {
-    //   res.send(false);
-    // } else {
-    //   await result.save();
-    //   res.send(true);
-    // }
+    if (data) {
+      const result = await new hotelSchema({
+        ownerId: data._id,
+        hotelName: req.body.hotelName,
+        password: req.body.password,
+        city: req.body.city,
+        pinCode: req.body.postalCode,
+        country: req.body.country,
+        state: req.body.state,
+        photo: req.files[0].path,
+        location: { latitude: req.body.lat, longitude: req.body.lng },
+        rooms: [],
+      });
+      result.save();
+      const putData = await userSchema.findByIdAndUpdate(data._id, {
+        role: role,
+      });
+      res.send("Data Entered:)");
+      console.log(req.files[0].path, result);
+    }
   } catch (err) {
     console.log(err);
   }
