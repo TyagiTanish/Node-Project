@@ -1,24 +1,26 @@
 const hotelSchema = require("../../../models/Hotel/hotelSchema");
-
+const userSchema = require("../../../models/UserLogin/userSchema");
 const post = async (req, res) => {
   try {
     const role = "member";
-
+    const email = req.body.email;
+    const data = await userSchema.findOne({ email: email });
     const result = await new hotelSchema({
+      ownerId: data._id,
       hotelName: req.body.hotelName,
       phone: req.body.phone,
       password: req.body.password,
       city: req.body.city,
-      postalCode: req.body.postalCode,
+      pinCode: req.body.postalCode,
       country: req.body.country,
       photo: req.files.path,
-      lng: req.body.lng,
-      lat: req.body.lat,
-      role: role,
+      location: { latitude: req.body.lat, longitude: req.body.lng },
     });
     // console.log(req.files, req.body);
-    // const data = await hotelSchema.findOne({ email: result.email });
-
+    const putData = await userSchema.findByIdAndUpdate(data._id, {
+      role: role,
+    });
+    console.log(result, putData);
     // if (data) {
     //   res.send(false);
     // } else {
