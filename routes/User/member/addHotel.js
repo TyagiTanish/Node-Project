@@ -16,6 +16,7 @@ const post = async (req, res) => {
         state: req.body.state,
         photo: req.files[0].path,
         location: { latitude: req.body.lat, longitude: req.body.lng },
+        amenities: req.body.amenities,
         rooms: [],
       });
       result.save();
