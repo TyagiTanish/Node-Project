@@ -14,7 +14,6 @@ const post = async (req, res) => {
 
       if(data)
       {
-      
         res.send(false);
       }
       else{
