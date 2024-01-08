@@ -47,6 +47,6 @@ app.post("/addHotel", upload.array("files"), addHotel);
 app.post("/uploadRooms", upload.array("files"), addRooms);
 connect();
 
-app.listen(5000, () => {
-  console.log("Listening on port 5000....");
+app.listen(8000, () => {
+  console.log("Listening on port 8000....");
 });
