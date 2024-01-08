@@ -8,7 +8,7 @@ const connect = require("./db/connect");
 const multer = require("multer");
 const memberRegister = require("./routes/User/member/post/post");
 const addHotel = require("./routes/User/member/addHotel");
-
+const addRooms = require("./routes/rooms/addRooms");
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -44,8 +44,9 @@ app.use(cors(corsOptions));
 app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
+app.post("/uploadRooms", upload.array("files"), addRooms);
 connect();
 
-app.listen(8000, () => {
-  console.log("Listening on port 8000....");
+app.listen(5000, () => {
+  console.log("Listening on port 5000....");
 });
