@@ -1,11 +1,12 @@
 const hotelSchema = require("../../models/Hotel/hotelSchema");
+const userSchema = require("../../models/UserLogin/userSchema");
 const post = async (req, res) => {
   try {
     // const role = "member";
     const email = req.body.email;
     const data = await userSchema.findOne({ email: email });
+    console.log(req.body);
     if (data) {
-      // console.log(req.body.files[0]);
       const result = await new hotelSchema({
         rooms: [
           { roomNo: req.body.roomNo },
@@ -15,6 +16,7 @@ const post = async (req, res) => {
           { photo3: req.body.files[2].path },
           { price: req.body.price },
           { roomHighlights: req.body.roomHighlight },
+          { roomDiscription: req.body.discription },
         ],
       });
       result.save();
