@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     discription: req.body.discription,
   });
 
-  console.log(data);
+  // console.log(data);
   data.save();
   res.json({ test: true });
 };
