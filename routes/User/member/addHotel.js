@@ -17,12 +17,16 @@ const post = async (req, res) => {
         photo: req.files[0].path,
         location: { latitude: req.body.lat, longitude: req.body.lng },
         amenities: req.body.amenities,
+        discription: req.body.discription,
         rooms: [],
       });
       result.save();
       const putData = await userSchema.findByIdAndUpdate(data._id, {
         role: role,
       });
+      if (data.role === "customer") {
+        putData();
+      }
       res.send("Data Entered:)");
       console.log(req.files[0].path, result);
     }

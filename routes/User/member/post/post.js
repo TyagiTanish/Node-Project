@@ -21,9 +21,10 @@ module.exports = async (req, res) => {
     pinCode: req.body.pinCode,
     rooms: [],
     amenities: req.body.amenities,
+    discription: req.body.discription,
   });
 
-  console.log(data);
+  // console.log(data);
   data.save();
   res.json({ test: true });
 };
