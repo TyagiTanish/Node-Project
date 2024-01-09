@@ -5,7 +5,7 @@ const post = async (req, res) => {
     // const role = "member";
     const email = req.body.email;
     const data = await userSchema.findOne({ email: email });
-    console.log(req.body);
+    // console.log(req.body);
     if (data) {
       const result = await new hotelSchema({
         rooms: [
