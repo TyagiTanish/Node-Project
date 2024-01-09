@@ -1,4 +1,5 @@
-const hotelSchema = require("../../models/Hotel/hotelSchema");
+const hotelSchema = require("../../models/Hotel/hotelSchema")
+const userSchema = require('../../models/UserLogin/userSchema')
 const post = async (req, res) => {
   try {
     // const role = "member";
