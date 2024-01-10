@@ -70,6 +70,10 @@ const hotelSchema = new mongoose.Schema(
           type: Object,
           required: true,
         },
+        discription: {
+          type: String,
+          required: true,
+        },
       },
     ],
     amenities: [],
