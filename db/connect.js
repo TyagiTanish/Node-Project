@@ -3,7 +3,9 @@ const connect = async () => {
   // conn = await mongoose.connect("mongodb://localhost:27017", {
   //   dbName: "OyoProject",
   // });
-  conn = await mongoose.connect("mongodb://127.0.0.1:27017/OyoProject");
+  conn = await mongoose.connect("mongodb://admin:JKuighk97%21%40klnjgv@192.168.1.190:27017/?retryWrites=true&loadBalanced=false&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-256",{
+    dbName:'OyoProject'
+  });
   if (conn) {
     console.log("Database Connected.");
   } else {
