@@ -10,13 +10,16 @@ const registerMember = require("./User/member/post/post");
 const getHotel=require('./User/member/get/get')
 const password = require("./User/update/password");
 const extractParam = require("../middlewares/extractParams/extractParams");
-
+const getInfo = require("./User/getInfo");
+const searchHotels=require('./User/searchHotels')
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
 router.put("/username/:id", extractParam("id"), username);
 router.put("/password/:id", extractParam("id"), password);
-router.get('/hotels',auth,getHotel)
+router.get('/getInfo/:id', extractParam("id"),auth,getInfo )
+router.get('/hotels',auth,getHotel);
+router.get('/searchHotels',auth,searchHotels)
 router.post("/getMember", getMember);
 // router.post('/registerMember',registerMember)
 module.exports = router;

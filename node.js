@@ -36,7 +36,9 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
 });
-app.use("/Images", express.static("Images"));
+
+app.use("/Images", express.static("Images/"));
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
