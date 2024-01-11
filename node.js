@@ -9,6 +9,8 @@ const multer = require("multer");
 const memberRegister = require("./routes/User/member/post/post");
 const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
+const auth = require("./middlewares/auth");
+const extractParam = require("./middlewares/extractParams/extractParams");
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -38,7 +40,6 @@ const upload = multer({
 });
 
 app.use("/Images", express.static("Images/"));
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,7 +47,8 @@ app.use(cors(corsOptions));
 app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
-app.post("/uploadRooms", upload.array("files"), addRooms);
+app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
+app.post("/uploadRooms",extractParam("id"),upload.array("files",4), addRooms);
 connect();
 
 app.listen(8000, () => {
