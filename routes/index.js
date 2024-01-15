@@ -13,6 +13,7 @@ const extractParam = require("../middlewares/extractParams/extractParams");
 const getInfo = require("./User/getInfo");
 const searchHotels=require('./User/searchHotels');
 const deleteHotel=require('./User/member/deleteHotel')
+const update=require('./User/member/update')
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -23,5 +24,6 @@ router.get('/hotels',auth,getHotel);
 router.get('/searchHotels',auth,searchHotels)
 router.post("/getMember", getMember);
 router.delete('/deleteHotel/:id',extractParam("id"),deleteHotel);
+router.put('/updateUser',update);
 // router.post('/registerMember',registerMember)
 module.exports = router;

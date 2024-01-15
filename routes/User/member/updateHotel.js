@@ -17,15 +17,8 @@ module.exports=async(req,res)=>{
         })
         const result2=await hotelDetails.find({_id:req.body._id});
         const newResult1=await userDetails.findOne({_id:req.body.ownerId});
-        const sendResult=[
-            {
-                user:newResult1
-            },
-            {
-                hotelInfo:result2
-            }
-        ]
-        res.send(sendResult)
+       
+        res.send(result2)
   
     }
    else{
@@ -44,16 +37,9 @@ module.exports=async(req,res)=>{
     })
     const newResult1=await userDetails.findOne({_id:req.body.ownerId});
     const result2=await hotelDetails.find({_id:req.body._id});
-    const sendResult=[
-        {
-            user:newResult1
-        },
-        {
-            hotelInfo:result2
-        }
-    ]
+    
  
-    res.send(sendResult)
+    res.send(result2)
    }
 
     
