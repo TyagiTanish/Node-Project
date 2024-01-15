@@ -9,6 +9,7 @@ const multer = require("multer");
 const memberRegister = require("./routes/User/member/post/post");
 const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
+const updateHotel=require('./routes/User/member/updateHotel')
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -47,6 +48,7 @@ app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
 app.post("/uploadRooms", upload.array("files"), addRooms);
+app.put('/updateHotel', upload.single('files'),updateHotel)
 connect();
 
 app.listen(8000, () => {

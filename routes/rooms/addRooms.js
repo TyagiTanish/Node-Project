@@ -5,7 +5,7 @@ const post = async (req, res) => {
     // const role = "member";
     const email = req.body.email;
     const data = await userSchema.findOne({ email: email });
-    // console.log(req.body);
+  
     if (data) {
       const result = await new hotelSchema({
         rooms: [
@@ -19,12 +19,9 @@ const post = async (req, res) => {
         ],
       });
       result.save();
-      // console.log(req.body);
-      //   const putData = await userSchema.findByIdAndUpdate(data._id, {
-      //     role: role,
-      // });
+    
       res.send("Data Entered:)");
-      // console.log(req.body.files[0].path);
+     ;
     }
   } catch (err) {
     console.log(err);

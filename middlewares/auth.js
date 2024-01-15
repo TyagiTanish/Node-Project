@@ -18,7 +18,7 @@ const auth = async (req, res, next) => {
       req.user = user;
       next();
     } else {
-      console.log("no header");
+     
       res.status(401).json({ message: "Authentication required" });
     }
   } catch (error) {
