@@ -12,7 +12,8 @@ const getHotelForCustomer = require("./User/getHotels");
 const password = require("./User/update/password");
 const extractParam = require("../middlewares/extractParams/extractParams");
 const getInfo = require("./User/getInfo");
-const searchHotels = require("./User/searchHotels");
+const searchHotels=require('./User/searchHotels');
+const deleteHotel=require('./User/member/deleteHotel')
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -24,5 +25,6 @@ router.get("/hotels", auth, getHotelForParticularUser);
 router.get("/getHotels", getHotelForCustomer);
 router.get("/searchHotels", auth, searchHotels);
 router.post("/getMember", getMember);
+router.delete('/deleteHotel/:id',extractParam("id"),deleteHotel);
 // router.post('/registerMember',registerMember)
 module.exports = router;
