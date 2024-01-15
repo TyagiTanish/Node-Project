@@ -9,9 +9,9 @@ const multer = require("multer");
 const memberRegister = require("./routes/User/member/post/post");
 const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
-const auth = require("./middlewares/auth");
 const extractParam = require("./middlewares/extractParams/extractParams");
 const EditRooms = require("./routes/rooms/EditRooms");
+const updateHotel=require('./routes/User/member/updateHotel')
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -52,6 +52,8 @@ app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms
 app.post("/uploadRooms",extractParam("id"),upload.array("files",4), addRooms);
 app.post('/editRoom',upload.array("files",4),EditRooms)
 app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
+app.post("/uploadRooms", upload.array("files"), addRooms);
+app.put('/updateHotel', upload.single('files'),updateHotel)
 connect();
 
 // app.use((err,req,res)=>{
