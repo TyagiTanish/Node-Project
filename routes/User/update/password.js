@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 const password = async (req, res) => {
 
+try {
   const id = req.id;
   const password = await bcrypt.hash(req.body.newpassword, 10);
   const data = await userSchema.findById({ _id: id });
@@ -15,7 +16,11 @@ const password = async (req, res) => {
       password: password,
     });
     res.send(true);
-
+   
   }
+} catch (error) {
+  res.send(error)
+}
+ 
 };
 module.exports = password;

@@ -18,10 +18,11 @@ const auth = async (req, res, next) => {
       req.user = user;
       next();
     } else {
-     
-      res.status(401).json({ message: "Authentication required" });
+      console.log("no header");
+    return  res.status(401).json({ message: "Authentication required" });
     }
   } catch (error) {
+    console.log("error.....")
     res.status(500).json({
       message: error.message ?? "Server error. Please try again later.",
     });

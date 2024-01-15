@@ -1,3 +1,8 @@
 module.exports = async (req,res) => {
-  res.send(req.user);
+  try {
+    res.send(req.user);
+  } catch (error) {
+    res.send(error)
+  }
+  
 };

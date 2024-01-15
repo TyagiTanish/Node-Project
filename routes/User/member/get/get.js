@@ -1,3 +1,4 @@
+
 const hotelDetails = require('../../../../models/Hotel/hotelSchema');
 const userDetails=require('../../../../models/Hotel/hotelSchema');
 module.exports=async(req,res)=>{
@@ -7,3 +8,4 @@ module.exports=async(req,res)=>{
    
     res.send(data)
 }
+
