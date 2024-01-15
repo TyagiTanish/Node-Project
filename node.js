@@ -11,6 +11,7 @@ const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
 const auth = require("./middlewares/auth");
 const extractParam = require("./middlewares/extractParams/extractParams");
+const EditRooms = require("./routes/rooms/EditRooms");
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -49,7 +50,15 @@ app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
 app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
 app.post("/uploadRooms",extractParam("id"),upload.array("files",4), addRooms);
+app.post('/editRoom',upload.array("files",4),EditRooms)
+app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
 connect();
+
+// app.use((err,req,res)=>{
+//   res.status(err?.statusCode ||500).json({
+//     message: err.message ?? "Server error. Please try again later.",
+//   });
+// })
 
 app.listen(8000, () => {
   console.log("Listening on port 8000....");

@@ -28,10 +28,10 @@ const post = async (req, res) => {
         putData();
       }
       res.send("Data Entered:)");
-      console.log(req.files[0].path, result);
+   
     }
   } catch (err) {
-    console.log(err);
+    res.send(err)
   }
 };
 module.exports = post;

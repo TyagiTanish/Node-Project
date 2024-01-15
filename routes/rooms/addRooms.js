@@ -1,6 +1,6 @@
 const hotelSchema = require("../../models/Hotel/hotelSchema");
 const userSchema = require("../../models/UserLogin/userSchema");
-const post = async (req, res) => {
+const post = async (req, res,next) => {
   const roomHighlight =[]
   // req.body.files.map((file)=>console.log(file))
 
@@ -47,7 +47,8 @@ const post = async (req, res) => {
       );
     }
   } catch (err) {
-    console.log(err);
+    
+    res.send(err)
   }
 };
 

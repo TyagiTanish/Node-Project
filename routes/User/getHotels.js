@@ -1,8 +1,13 @@
 const hotelDetails = require("../../models/Hotel/hotelSchema");
 
 module.exports = async (req, res) => {
-  const data = await hotelDetails.find({});
+  try {
+    const data = await hotelDetails.find({});
 
-  res.send(data);
+    res.send(data);
+  } catch (error) {
+    res.send(error)
+  }
+
   // console.log(dataa);
 };

@@ -21,7 +21,7 @@ const post = async (req, res) => {
         res.send(true);
       }
   } catch (err) {
-    console.log(err);
+    res.send(err)
   }
 };
 module.exports = post;
