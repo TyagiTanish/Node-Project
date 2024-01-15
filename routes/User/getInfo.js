@@ -1,20 +1,11 @@
-const hotelDetails=require('../../models/Hotel/hotelSchema');
-module.exports=async(req,res)=>{
+const hotelDetails = require("../../models/Hotel/hotelSchema");
+module.exports = async (req, res) => {
+    try{
+        const data = await hotelDetails.find({ _id: req.id });
 
-   const data= await hotelDetails.find({_id:req.id});
- 
-   const user = req.user;
+        res.send(data);
+    }catch(err){
+        res.send(err);
+    }
 
-
-
-   const result2=[
-      {
-          user:user
-      },
-      {
-          hotelInfo:data
-      }
-  ]
-
-   res.send(result2)
-}
+};
