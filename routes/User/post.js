@@ -21,11 +21,7 @@ const post = async (req, res) => {
         res.send(true);
       }
   } catch (err) {
-<<<<<<< HEAD
     res.send(err)
-=======
-
->>>>>>> 3301d1356c7076de9d89e8ef794a11f3687b177e
   }
 };
 module.exports = post;
