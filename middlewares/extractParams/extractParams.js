@@ -1,5 +1,5 @@
 const extractParam = (param) => (req, res, next) => {
-  console.log("Hello");
+  // console.log("Hello");
   req[param] = req.params[param];
   req.email;
   next();
