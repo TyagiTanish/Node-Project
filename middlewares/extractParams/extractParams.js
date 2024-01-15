@@ -1,7 +1,8 @@
 const extractParam = (param) => (req, res, next) => {
-    req[param] = req.params[param];
-    req.email
-    next();
-  };
-  
-  module.exports = extractParam;
+  // console.log("Hello");
+  req[param] = req.params[param];
+  req.email;
+  next();
+};
+
+module.exports = extractParam;

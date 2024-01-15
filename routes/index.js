@@ -19,6 +19,7 @@ router.get("/getUserData", extractParam("authToken"), auth, get);
 router.put("/username/:id", extractParam("id"), username);
 router.put("/password/:id", extractParam("id"), password);
 router.get("/getInfo/:id", extractParam("id"), auth, getInfo);
+router.get("/getHotel/:id", extractParam("id"), getHotelForCustomer);
 router.get("/hotels", auth, getHotelForParticularUser);
 router.get("/getHotels", getHotelForCustomer);
 router.get("/searchHotels", auth, searchHotels);
