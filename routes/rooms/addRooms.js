@@ -1,7 +1,7 @@
 const hotelSchema = require("../../models/Hotel/hotelSchema");
 const userSchema = require("../../models/UserLogin/userSchema");
-const post = async (req, res,next) => {
-  const roomHighlight =[]
+const post = async (req, res, next) => {
+  const roomHighlight = [];
   // req.body.files.map((file)=>console.log(file))
 
   // [...photos,{path:file.path}]
@@ -14,14 +14,16 @@ const post = async (req, res,next) => {
         { _id: hotel._id },
         {
           $push: {
-            rooms: [{
-                  roomQuantity: req.body.roomQuantity,
-                  roomType: req.body.type,
-                  photos:req.files,
-                  price: req.body.price,
-                  discription: req.body.discription,
-                  amenities: JSON.parse(req.body.roomHighlight),
-                }],
+            rooms: [
+              {
+                roomQuantity: req.body.roomQuantity,
+                roomType: req.body.type,
+                photos: req.files,
+                price: req.body.price,
+                discription: req.body.discription,
+                amenities: JSON.parse(req.body.roomHighlight),
+              },
+            ],
           },
         }
       );
@@ -32,14 +34,12 @@ const post = async (req, res,next) => {
           $push: {
             rooms: [
               {
-                $push: {
-                  roomQuantity: req.body.roomQuantity,
-                  roomType: req.body.type,
-                  photos:req.files,
-                  price: req.body.price,
-                  discription: req.body.discription,
-                  amenities: JSON.parse(req.body.roomHighlight),
-                },
+                roomQuantity: req.body.roomQuantity,
+                roomType: req.body.type,
+                photos: req.files,
+                price: req.body.price,
+                discription: req.body.discription,
+                amenities: JSON.parse(req.body.roomHighlight),
               },
             ],
           },
@@ -47,8 +47,7 @@ const post = async (req, res,next) => {
       );
     }
   } catch (err) {
-    
-    res.send(err)
+    res.send(err);
   }
 };
 
