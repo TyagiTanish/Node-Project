@@ -2,14 +2,9 @@ const hotelSchema = require("../../models/Hotel/hotelSchema");
 const userSchema = require("../../models/UserLogin/userSchema");
 const post = async (req, res, next) => {
   const roomHighlight = [];
-  // req.body.files.map((file)=>console.log(file))
-
-  // [...photos,{path:file.path}]
-  // console.log(req.file)
-
   try {
     if (!req.id) {
-      const hotel = await hotelSchema.findOne();
+      const hotel = await hotelSchema.findOne({ownerId:req.user._id});
       await hotelSchema.updateOne(
         { _id: hotel._id },
         {
@@ -27,6 +22,7 @@ const post = async (req, res, next) => {
           },
         }
       );
+      res.send(true)
     } else {
       await hotelSchema.findByIdAndUpdate(
         { _id: req.id },
@@ -45,7 +41,9 @@ const post = async (req, res, next) => {
           },
         }
       );
+      res.send(true)
     }
+    
   } catch (err) {
     res.send(err);
   }

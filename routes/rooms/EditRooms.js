@@ -3,8 +3,6 @@ const hotelDetails = require("../../models/Hotel/hotelSchema");
 module.exports = async (req,res) =>{
     const images =JSON.parse(req.body.photos);
   const image  =  images.concat(req.files);
-  const amenities = JSON.parse(req.body.amenities)
-  console.log(typeof amenities);
     if(!req.id){
         const hotel = await hotelDetails.findOne()
        const rooms = hotel.rooms.map((room)=>{

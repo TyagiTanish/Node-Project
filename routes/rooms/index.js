@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const post = require("./addRooms");
-router.post("/", post);
+const deleteRoom = require('./deleteRoom')
 
+router.post("/", post);
+router.delete('/',deleteRoom);
 module.exports = router;
