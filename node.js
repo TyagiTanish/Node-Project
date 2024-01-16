@@ -9,7 +9,10 @@ const multer = require("multer");
 const memberRegister = require("./routes/User/member/post/post");
 const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
-const updateHotel=require('./routes/User/member/updateHotel')
+const extractParam = require("./middlewares/extractParams/extractParams");
+const EditRooms = require("./routes/rooms/EditRooms");
+const updateHotel=require('./routes/User/member/updateHotel');
+const auth = require("./middlewares/auth");
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -39,7 +42,6 @@ const upload = multer({
 });
 
 app.use("/Images", express.static("Images/"));
-
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,9 +49,19 @@ app.use(cors(corsOptions));
 app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
+app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
+app.post("/uploadRooms",auth,extractParam("id"),upload.array("files",4), addRooms);
+app.post('/editRoom',upload.array("files",4),EditRooms)
+app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
 app.post("/uploadRooms", upload.array("files"), addRooms);
 app.put('/updateHotel', upload.single('files'),updateHotel)
 connect();
+
+// app.use((err,req,res)=>{
+//   res.status(err?.statusCode ||500).json({
+//     message: err.message ?? "Server error. Please try again later.",
+//   });
+// })
 
 app.listen(8000, () => {
   console.log("Listening on port 8000....");

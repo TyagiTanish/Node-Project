@@ -11,5 +11,6 @@ const username = async (req, res) => {
   if (data) {
     res.send("username updated successfully");
   }
+ 
 };
 module.exports = username;
