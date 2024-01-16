@@ -11,7 +11,8 @@ const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
 const extractParam = require("./middlewares/extractParams/extractParams");
 const EditRooms = require("./routes/rooms/EditRooms");
-const updateHotel=require('./routes/User/member/updateHotel')
+const updateHotel=require('./routes/User/member/updateHotel');
+const auth = require("./middlewares/auth");
 dotenv.config();
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -49,7 +50,7 @@ app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
 app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
-app.post("/uploadRooms",extractParam("id"),upload.array("files",4), addRooms);
+app.post("/uploadRooms",auth,extractParam("id"),upload.array("files",4), addRooms);
 app.post('/editRoom',upload.array("files",4),EditRooms)
 app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
 app.post("/uploadRooms", upload.array("files"), addRooms);
