@@ -6,7 +6,9 @@ module.exports=async(req,res)=>{
 
 
     const data=await hotelDetails.find({ownerId:user._id});
-    
+    // if(data.length===0){
+    //     const result=
+    // }
 
     res.send(data)
 }
