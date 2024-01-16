@@ -29,7 +29,7 @@ router.get("/hotels", auth, getHotelForParticularUser);
 router.get("/getHotels", getHotelForCustomer);
 router.get("/searchHotels", auth, searchHotels);
 router.post("/getMember", getMember);
-router.delete('/deleteHotel/:id',extractParam("id"),deleteHotel);
+router.delete('/deleteHotel/:id',extractParam("id"),auth,deleteHotel);
 router.put('/updateUser',update);
 router.use('/deleteRoom',auth,rooms)
 router.use('/deleteRoom/:id',extractParam,rooms)
