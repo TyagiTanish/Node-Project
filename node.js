@@ -51,7 +51,7 @@ app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
 app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
 app.post("/uploadRooms",auth,extractParam("id"),upload.array("files",4), addRooms);
-app.post('/editRoom',upload.array("files",4),EditRooms)
+app.post('/editRoom',auth,upload.array("files",4),EditRooms)
 app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
 app.post("/uploadRooms",auth,upload.array("files"), addRooms);
 app.put('/updateHotel', upload.single('files'),updateHotel)

@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
         },
       }
     );
-    photos.map((photo) => {
+    photos?.map((photo) => {
       fs.unlink(photo.path, (err) => {
         if (err) console.log(err);
         else {
