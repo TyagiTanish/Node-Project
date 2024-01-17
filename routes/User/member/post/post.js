@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
     user.save();
     const data = new hotelDetails({
       ownerId: user._id,
-      hotelName: req.body.name,
+      hotelName: req.body.hotelName,
       location: { latitude: req.body.latitude, longitude: req.body.longitude },
       photo: req.files[0].path,
       city: req.body.city,
@@ -27,7 +27,6 @@ module.exports = async (req, res) => {
     data.save();
     res.json({ test: true });
   } catch (error) {
-    res.send(error)
+    res.send(error);
   }
- 
 };
