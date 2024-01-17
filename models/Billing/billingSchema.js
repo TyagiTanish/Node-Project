@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const billingSchema = new mongoose.Schema({
+  // schema of billing details
   fullName: {
     type: String,
   },
