@@ -12,11 +12,10 @@ const getHotelForCustomer = require("./User/getHotels");
 const password = require("./User/update/password");
 const extractParam = require("../middlewares/extractParams/extractParams");
 const getInfo = require("./User/getInfo");
-const searchHotels=require('./User/searchHotels');
-const deleteHotel=require('./User/member/deleteHotel')
-const update=require('./User/member/update')
-const rooms = require('./rooms')
-
+const searchHotels = require("./User/searchHotels");
+const deleteHotel = require("./User/member/deleteHotel");
+const update = require("./User/member/update");
+const rooms = require("./rooms");
 
 router.use("/auth", authentication);
 router.use("/register", user);
@@ -29,9 +28,9 @@ router.get("/hotels", auth, getHotelForParticularUser);
 router.get("/getHotels", getHotelForCustomer);
 router.get("/searchHotels", auth, searchHotels);
 router.post("/getMember", getMember);
-router.delete('/deleteHotel/:id',extractParam("id"),auth,deleteHotel);
-router.put('/updateUser',update);
-router.use('/deleteRoom',auth,rooms)
-router.use('/deleteRoom/:id',extractParam,rooms)
+router.delete("/deleteHotel/:id", extractParam("id"), auth, deleteHotel);
+router.put("/updateUser", update);
+router.use("/deleteRoom", auth, rooms);
+router.use("/deleteRoom/:id", extractParam("id"), rooms);
 // router.post('/registerMember',registerMember)
 module.exports = router;
