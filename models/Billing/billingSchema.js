@@ -9,12 +9,6 @@ const billingSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  checkIn: {
-    type: String,
-  },
-  checkOut: {
-    type: String,
-  },
   quatity: {
     type: String,
   },
@@ -28,5 +22,5 @@ const billingSchema = new mongoose.Schema({
     type: String,
   },
 });
-const billingDetails = mongoose.model("billingDetails", billingSchema);
+const billingDetails = mongoose.model("billingdetails", billingSchema);
 module.exports = billingDetails;

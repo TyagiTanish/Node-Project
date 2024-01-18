@@ -16,7 +16,7 @@ const searchHotels = require("./User/searchHotels");
 const deleteHotel = require("./User/member/deleteHotel");
 const update = require("./User/member/update");
 const rooms = require("./rooms");
-
+const bookRoom = require("./Billing");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -33,4 +33,5 @@ router.put("/updateUser", update);
 router.use("/deleteRoom", auth, rooms);
 router.use("/deleteRoom/:id", extractParam("id"), rooms);
 // router.post('/registerMember',registerMember)
+router.use("/bookRoom", bookRoom);
 module.exports = router;
