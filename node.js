@@ -26,6 +26,7 @@ dotenv.config();
 //     "Access-Control-Allow-Credentials",
 //   ],
 // };
+
 app.use(cors())
 // const server = require("http").createServer();
 const server = http.createServer(app);
@@ -35,6 +36,7 @@ const server = http.createServer(app);
         methods: ["GET", "POST"],
       },
     });
+
 
 
 io.on("connection", (client) => {
