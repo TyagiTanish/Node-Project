@@ -1,7 +1,6 @@
 const hotelDetails = require("../../models/Hotel/hotelSchema");
 
 module.exports = async (req,res) =>{
-    console.log(req.body);
     try {
         if(!req.id)
         {
