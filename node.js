@@ -14,16 +14,20 @@ const EditRooms = require("./routes/rooms/EditRooms");
 const updateHotel=require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
 dotenv.config();
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "Access-Control-Allow-Credentials",
-  ],
-};
+
+app.use(express.json({ extended: false }));
+
+
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   credentials: true,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   allowedHeaders: [
+//     "Content-Type",
+//     "Authorization",
+//     "Access-Control-Allow-Credentials",
+//   ],
+// };
 
 const storage = multer.diskStorage({
   destination: function (req, files, cb) {
@@ -45,7 +49,7 @@ app.use("/Images", express.static("Images/"));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
+app.use(cors());
 app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
