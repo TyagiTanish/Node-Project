@@ -19,7 +19,7 @@ const rooms = require("./rooms");
 const booking = require("./payment/booking");
 const paymentSuccess = require("./payment/paymentSuccess");
 const availability = require("./rooms/availability");
-
+const bookRoom = require("./Billing");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -40,4 +40,5 @@ router.post('/payment',paymentSuccess)
 router.put('/availability/:id',extractParam('id'),availability);
 router.put('/availability',auth,availability);
 // router.post('/registerMember',registerMember)
+router.use("/bookRoom", bookRoom);
 module.exports = router;

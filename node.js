@@ -13,11 +13,9 @@ const extractParam = require("./middlewares/extractParams/extractParams");
 const EditRooms = require("./routes/rooms/EditRooms");
 const updateHotel=require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
+const { Server } = require('socket.io');
+const http = require('http');
 dotenv.config();
-
-app.use(express.json({ extended: false }));
-
-
 // const corsOptions = {
 //   origin: "http://localhost:3000",
 //   credentials: true,
@@ -29,7 +27,28 @@ app.use(express.json({ extended: false }));
 //   ],
 // };
 
-const storage = multer.diskStorage({
+app.use(cors())
+// const server = require("http").createServer();
+const server = http.createServer(app);
+    const io = new Server(server, {
+      cors: {
+        origin: "http://localhost:3000",
+        methods: ["GET", "POST"],
+      },
+    });
+
+
+
+io.on("connection", (client) => {
+
+  console.log('hello user');
+  client.on("send_Message",(data)=>{
+  client.broadcast.emit("recieved_Message",data)
+  })
+});
+
+
+const storage = multer.diskStorage({ 
   destination: function (req, files, cb) {
     let fileLocation = "./Images/";
     // let fileLocation = "/home/prologic/Documents";
@@ -44,7 +63,6 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
 });
-
 app.use("/Images", express.static("Images/"));
 app.use(express.json());
 app.use(bodyParser.json());
@@ -67,6 +85,6 @@ connect();
 //   });
 // })
 
-app.listen(8000, () => {
+server.listen(8000, () => {
   console.log("Listening on port 8000....");
 });
