@@ -9,7 +9,7 @@ const billingSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  quatity: {
+  totalRooms: {
     type: String,
   },
   bookFrom: {
@@ -18,12 +18,18 @@ const billingSchema = new mongoose.Schema({
   bookTo: {
     type: String,
   },
-  guests: {
+  totalDays: {
     type: String,
   },
-  hotelId:{
-    type:String
-  }
+  totalGuests: {
+    type: String,
+  },
+  roomId: {
+    type: String,
+  },
+  hotelId: {
+    type: String,
+  },
 });
 const billingDetails = mongoose.model("billingdetails", billingSchema);
 module.exports = billingDetails;
