@@ -30,6 +30,9 @@ const billingSchema = new mongoose.Schema({
   hotelId: {
     type: String,
   },
+  userId: {
+    type: String,
+  },
 });
 const billingDetails = mongoose.model("billingdetails", billingSchema);
 module.exports = billingDetails;

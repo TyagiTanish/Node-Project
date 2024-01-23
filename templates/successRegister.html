@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Template</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: "Trebuchet MS";
+      font-style: normal;
+      font-weight: normal;
+      src: local("Trebuchet MS"), url("/font-family/trebuc.woff") format("woff");
+    }
+
+    body {
+      font-family: "Trebuchet MS";
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .body-div {
+      background-color: rgb(245, 245, 245);
+      border-spacing: 0;
+      margin-top: 20px;
+      padding: 70px 0 50px 0;
+      width: 1200px;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+      border-spacing: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    h2 {
+      padding: 0;
+      margin: 0;
+    }
+
+    #login-text p {
+      padding-bottom: 30px;
+    }
+
+    #thead-img {
+      height: 100px !important;
+    }
+
+    @media screen and (max-width: 767px) {
+      table {
+        width: 80% !important;
+      }
+
+      h2 {
+        font-size: 38px !important;
+      }
+
+      h3 {
+        font-size: 24px !important;
+      }
+
+      #register-text td {
+        padding: 20px 100px !important;
+      }
+
+      .header-logo img {
+        width: 100% !important;
+      }
+
+      #header-logo img {
+        width: 100px !important;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      table {
+        width: 80% !important;
+      }
+
+      h2 {
+        font-size: 38px !important;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      #register-text td {
+        padding: 20px 50px !important;
+      }
+
+      #header-logo img {
+        width: 100px !important;
+      }
+    }
+
+    @media screen and (max-width: 425px) {
+      table {
+        width: 80% !important;
+      }
+
+      h2 {
+        font-size: 38px !important;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      #register-text td {
+        padding: 20px 30px !important;
+      }
+
+      #header-logo img {
+        width: 100px !important;
+      }
+    }
+
+    @media screen and (max-width: 375px) {
+      table {
+        width: 80% !important;
+      }
+
+      h2 {
+        font-size: 38px !important;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+
+  <body>
+    <div class="body-div">
+      <table style="background-color: lightgray; width: 400px; margin: 0 auto">
+        <thead
+          id="thead-img"
+          style="
+            text-align: center;
+            padding: 10px 0;
+            height: 70px;
+            background: linear-gradient(to left, red, rgb(250, 70, 70));
+            
+          "
+        >
+          <tr id="header-logo">
+            <th>
+              <!-- <h2 style="font-size: 44px; color: white; font-weight: bolder;">OYO</h2> -->
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
+            height="512" x="0" y="0" viewBox="0 0 520 520" style="enable-background:new 0 0 512 512"
+            xml:space="preserve" class="">
+            <g>
+                <path
+                    d="M239.987 460.841a10 10 0 0 1-7.343-3.213L34.657 243.463A10 10 0 0 1 42 226.675h95.3a10.006 10.006 0 0 1 7.548 3.439l66.168 76.124c7.151-15.286 20.994-40.738 45.286-71.752 35.912-45.85 102.71-113.281 216.994-174.153a10 10 0 0 1 10.85 16.712c-.436.341-44.5 35.041-95.212 98.6-46.672 58.49-108.714 154.13-139.243 277.6a10 10 0 0 1-9.707 7.6z"
+                    data-name="6-Check" fill="#FFFFFF" opacity="1" data-original="#000000" class=""></path>
+            </g>
+        </svg> -->
+        <img src="https://cdn.shopify.com/s/files/1/0623/9911/9575/files/check-mark_1.png?v=1706002556" alt="" width="25%" height="auto">
+
+            </th>
+          </tr>
+        </thead>
+        <tbody style="background-color: white; margin: 0 auto">
+          <tr id="register-text">
+            <td style="padding: 20px 100px 20px 100px">
+              <h3 style="text-align: center; font-size: 38px">
+                Thank You For Your Registeration
+              </h3>
+              <!-- <p style="color: #777777; text-align: center;">Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Aliquam,
+                            facere eos esse nobis ut repellat. Maiores unde omnis iure neque voluptates illum dolorum at
+                            blanditiis. Nesciunt ab corporis earum porro similique saepe nisi quasi est? Dignissimos
+                            veritatis ab dolor ipsum.</p> -->
+            </td>
+          </tr>
+          <tr id="login-text">
+            <td style="padding-left: 40px; padding-right: 40px">
+              <p style="text-align: center">
+                or
+                <a
+                  href="#"
+                  style="
+                    text-decoration: none;
+                    font-weight: bold;
+                    color: #d11450;
+                    text-align: center;
+                  "
+                  >log in </a
+                >to your account
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
