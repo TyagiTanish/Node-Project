@@ -49,7 +49,13 @@ io.on("connection", (client) => {
           fullName: data.fullName,
           email: data.email,
           phone: data.phone,
-          hotelId:data.hotelId
+          hotelId:data.hotelId,
+          roomId:data.roomId,
+          startDate:data.startDate,
+          endDate:data.endDate,
+          days:data.days,
+          totalGuests:data.guests,
+          status:"pending"
         });
         const yes=await result.save();
         if(yes){

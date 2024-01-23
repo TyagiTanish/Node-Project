@@ -9,15 +9,32 @@ const bookingSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  price: {},
   totalRooms: {
     type: String,
   },
-  bookFrom: {
+  startDate: {
     type: String,
   },
-  bookTo: {
+  endDate:{
+    type:String
+  },
+  days: {
     type: String,
   },
+  totalGuests: {
+    type: String,
+  },
+  hotelId:{
+    type:String
+  },
+  roomId:{
+      type:String
+  
+ },
+ status:{
+  type:String
+ },
   totalDays: {
     type: String,
   },
@@ -41,10 +58,16 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     default: "unpaid",
   },
+<<<<<<< HEAD:models/Billing/bookingSchema.js
   userId:{
     type:mongoose.Types.ObjectId,
     ref:'userDetails'
   }
+=======
+  userId: {
+    type: String,
+  },
+>>>>>>> a0f5ac07db2ceb68b8964eb70eac0c7b51399aa9:models/Billing/billingSchema.js
 });
 const bookings = mongoose.model("bookings", bookingSchema);
 module.exports = bookings;
