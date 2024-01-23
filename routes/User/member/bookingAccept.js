@@ -1,4 +1,4 @@
-const billingDetails = require("../../../models/Billing/billingSchema");
+const billingDetails = require("../../../models/Billing/bookingSchema");
 const hotelDetails = require("../../../models/Hotel/hotelSchema");
 
 module.exports=async(req,res)=>{
