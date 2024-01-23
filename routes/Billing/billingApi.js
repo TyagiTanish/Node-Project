@@ -7,6 +7,11 @@ const post = async (req, res) => {
     //     fullName: req.body.fullName,
     //     email: req.body.email,
     //     phone: req.body.phone,
+    //     bookFrom: req.body.startdate,
+    //     bookTo: req.body.enddate,
+    //     totalDays: req.body.totalDays,
+    //     totalGuests: req.body.totalGuests,
+    //     totalRooms: req.body.totalRooms,
     //   });
     // } else {
     //   result = await new billingSchema({
