@@ -9,15 +9,32 @@ const billingSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  price: {},
   totalRooms: {
     type: String,
   },
-  bookFrom: {
+  startDate: {
     type: String,
   },
-  bookTo: {
+  endDate:{
+    type:String
+  },
+  days: {
     type: String,
   },
+  totalGuests: {
+    type: String,
+  },
+  hotelId:{
+    type:String
+  },
+  roomId:{
+      type:String
+  
+ },
+ status:{
+  type:String
+ },
   totalDays: {
     type: String,
   },

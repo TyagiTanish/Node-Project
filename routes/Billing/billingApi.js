@@ -1,4 +1,5 @@
 const billingSchema = require("../../models/Billing/billingSchema");
+const hotelDetails=require("../../models/Hotel/hotelSchema")
 const post = async (req, res) => {
   try {
     var result = "";
@@ -26,7 +27,6 @@ const post = async (req, res) => {
     }
     // console.log(req.body);
     result.save();
-
     res.send("Data Entered Successfully:)");
   } catch (err) {
     res.send(err);
