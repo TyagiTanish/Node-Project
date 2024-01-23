@@ -1,21 +1,20 @@
-const Razorpay = require('razorpay');
-
+// server.js
+const express = require("express");
+const stripe = require("stripe")(
+  "sk_test_51Li8s7BQTREDaPxY7AUklpQjHmx29Nzcxquawr3KJEHWy3i4TQiVrftMnH0zLTgwnt9t1hVZrhN64OI10GrG39Fc00cR4utdeX"
+);
 module.exports = async (req, res) => {
-    try {
-        const instance = new Razorpay({
-            key_id: process.env.RAZORPAY_KEY_ID,
-            key_secret: process.env.RAZORPAY_SECRET,
-        });
-
-        const options = {
-            amount: 50000, // amount in smallest currency unit
-            currency: "INR",
-            receipt: "receipt_order_74394",
-        };
-        const order = await instance.orders.create(options);
-        if (!order) return res.status(500).send("Some error occured");
-        res.json(order);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-}
+  try {
+    const  {token} = JSON.parse(req.body.body)
+    const charge = await stripe.charges.create({
+      amount: 1000, // amount in cents
+      currency: "usd",
+      description: "Example Charge",
+      source: token.id,
+    });
+    res.send({ success: true, charge });
+  } catch (err) {
+    console.error(err);
+    res.send({ success: false, error: err.message });
+  }
+};

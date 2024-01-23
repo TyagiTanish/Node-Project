@@ -37,11 +37,9 @@ router.put("/updateUser", update);
 router.use("/deleteRoom", auth, rooms);
 router.use("/deleteRoom/:id", extractParam("id"), rooms);
 router.get('/bookingDetails',auth,bookingDetails)
-router.post('/bookingRequest',booking)
+router.post('/order',booking)
 router.post('/payment',paymentSuccess)
 router.put('/availability/:id',extractParam('id'),availability);
 router.put('/availability',auth,availability);
-
-// router.post('/registerMember',registerMember)
 router.use("/bookRoom", bookRoom);
 module.exports = router;
