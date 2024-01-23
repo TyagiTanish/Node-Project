@@ -21,6 +21,7 @@ const bookingDetails = require("./User/member/bookingDetails");
 const bookingDelete=require('./User/member/bookingDelete');
 const booking = require("./payment/booking");
 const availability = require("./rooms/availability");
+const paymentSuccess = require("./payment/paymentSuccess");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -43,5 +44,6 @@ router.put('/availability',auth,availability);
 router.get('/bookingDetails',auth,bookingDetails);
 router.delete('/bookingDelete/:id',extractParam("id"),auth,bookingDelete);
 // router.post('/registerMember',registerMember)
-router.use("/bookRoom", bookRoom);
+router.use("/bookRoom",auth,bookRoom);
+router.post('/paymentSuccess',paymentSuccess);
 module.exports = router;

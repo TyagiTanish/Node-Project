@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const hotelSchema = new mongoose.Schema(
   {
     ownerId: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'userdetails'
     
     },
     hotelName: {

@@ -15,7 +15,7 @@ const updateHotel=require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
 const { Server } = require('socket.io');
 const http = require('http');
-const billingSchema = require("./models/Billing/billingSchema");
+const billingSchema = require("./models/Billing/bookingSchema");
 dotenv.config();
 // const corsOptions = {
 //   origin: "http://localhost:3000",
@@ -41,10 +41,7 @@ const server = http.createServer(app);
 
 
 io.on("connection", (client) => {
-
-  console.log('hello user');
  client.on("send_Message",(data)=>{
-  console.log(data)
     const result = "";
     if (!data.guestName) {
       const get=async()=>{

@@ -1,4 +1,4 @@
-const billingSchema=require('../../../models/Billing/billingSchema')
+const billingSchema=require('../../../models/Billing/bookingSchema')
 const hotelDetails=require('../../../models/Hotel/hotelSchema')
 
 module.exports=async(req,res)=>{
