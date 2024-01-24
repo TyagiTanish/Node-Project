@@ -24,6 +24,10 @@ const bookingAccept = require("./User/member/bookingAccept");
 const booking = require("./payment/booking");
 const availability = require("./rooms/availability");
 const paymentSuccess = require("./payment/paymentSuccess");
+
+
+
+
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);

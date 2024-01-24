@@ -1,6 +1,15 @@
 const bookings = require("../../models/Billing/bookingSchema");
 const payments = require("../../models/Billing/paymentSchema");
 const PaymentReceiptNodemailer = require("./PaymentReceiptNodemailer");
+
+/**
+ * 
+ * @method  POST
+ * @api  /paymentSuccess
+ * @description   -after payment successfully captured this saves data in db
+ */
+
+
 module.exports = async (req,res) =>{
    
     const {transactionId,amount_captured,bookingId} = req.body;

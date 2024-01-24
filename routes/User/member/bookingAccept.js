@@ -1,6 +1,15 @@
 const billingDetails = require("../../../models/Billing/bookingSchema");
 const hotelDetails = require("../../../models/Hotel/hotelSchema");
 
+/**
+ * @method PUT
+ * @api  /bookingAccept/:id
+ * @description  -changes the status of booking request to accepted
+ *  -
+ */
+
+
+
 module.exports=async(req,res)=>{
     const user=req.user;
     const id=req.id;

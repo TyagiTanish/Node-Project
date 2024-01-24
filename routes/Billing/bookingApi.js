@@ -1,5 +1,13 @@
 const bookings = require("../../models/Billing/bookingSchema");
 
+/**
+ * 
+ * @method  POST
+ * @api  /bookRoom
+ * @description  
+ */
+
+
 const post = async (req, res) => {
   try {
 
