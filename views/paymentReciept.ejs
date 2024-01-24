@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .heading {
+        background-color: rgb(243, 76, 76);
+        padding: 2px 20px;
+        text-align: center;
+        color: white;
+      }
+
+      .heading h1 {
+        font-weight: 900;
+      }
+
+      .border-around {
+        border: 1px solid rgb(218, 218, 218);
+      }
+
+      .revert-text {
+        padding-right: 30px;
+      }
+
+      .para {
+        position: relative;
+        padding-top: 10px;
+      }
+
+      .para span {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      p span {
+        position: absolute;
+        left: 280px;
+        top: 0;
+      }
+
+      .details {
+        margin-top: 0;
+      }
+
+      @media screen and (max-width: 991px) {
+        p span {
+          left: 290px;
+          top: 0;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        p span {
+          left: 290px;
+          top: 0;
+        }
+      }
+
+      @media screen and (max-width: 575px) {
+        .revert-text {
+          padding: 0 10px;
+        }
+
+        p span {
+          left: 275px;
+          top: 0;
+        }
+
+        .details {
+          margin-top: 40px;
+        }
+      }
+
+      @media screen and (max-width: 425px) {
+        p span {
+          left: 200px;
+          top: 0;
+        }
+
+        .details {
+          margin-top: 40px;
+        }
+
+        .equi {
+          margin-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 375px) {
+        p span {
+          left: 175px;
+          top: 0;
+        }
+
+        .details {
+          margin-top: 40px;
+        }
+
+        .equi {
+          margin-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 375px) {
+        p span {
+          left: 175px;
+          top: 0;
+        }
+
+        .details {
+          margin-top: 40px;
+        }
+
+        .equi {
+          margin-top: 0;
+        }
+        .align1 {
+          margin-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 320px) {
+        p span {
+          left: 150px;
+          top: 0;
+        }
+
+        .align1 {
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="container">
+        <div class="border-around">
+          <div style="width: 100%">
+            <div class="heading">
+              <h1>OYO</h1>
+            </div>
+          </div>
+          <div style="width: 100%">
+            <h2 style="text-align: center">Payment Receipt</h2>
+            <hr />
+          </div>
+          <div
+            style="
+              width: 100%;
+              display: flex;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              padding: 0 30px;
+            "
+          >
+            <div style="width: 50%">
+              <p class="para">Payer's Name <span>:</span></p>
+              <p class="para">TransactionID <span>:</span></p>
+              <p class="para">Transaction Amount <span>:</span></p>
+              <p class="para">Payment Method <span>:</span></p>
+              <p class="para">Status <span>:</span></p>
+            </div>
+            <div style="width: 50%">
+              <div style="margin-left: 30px">
+                <p style="padding-top: 10px"><%=name%></p>
+                <p style="padding-top: 10px; width: 100%"><%=transactionId%></p>
+                <p style="padding-top: 10px"><%=amount%></p>
+                <p style="padding-top: 10px" class="align1"><%=type%></p>
+                <p style="padding-top: 10px"><%=type%></p>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 0 30px">
+            <div style="margin-top: 30px" class="revert-text">
+              <p style="font-size: 18px; font-weight: bold; text-align: center">
+                Your payment is successful. We will reach you soon as the
+                booking process is complete.
+              </p>
+            </div>
+            <div style="padding: 30px 0px" class="px-3 py-3">
+              <p style="font-weight: bold">Support OYO.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
