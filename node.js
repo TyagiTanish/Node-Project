@@ -15,7 +15,8 @@ const updateHotel=require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
 const { Server } = require('socket.io');
 const http = require('http');
-const billingSchema = require("./models/Billing/bookingSchema");
+const bookings = require("./models/Billing/bookingSchema");
+
 dotenv.config();
 // const corsOptions = {
 //   origin: "http://localhost:3000",
@@ -41,48 +42,10 @@ const server = http.createServer(app);
 
 
 io.on("connection", (client) => {
- client.on("send_Message",(data)=>{
-    const result = "";
-    if (!data.guestName) {
-      const get=async()=>{
-       const result =  await new billingSchema({
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          hotelId:data.hotelId,
-          roomId:data.roomId,
-          startDate:data.startDate,
-          endDate:data.endDate,
-          days:data.days,
-          totalGuests:data.guests,
-          status:"pending"
-        });
-        const yes=await result.save();
-        if(yes){
-          client.broadcast.emit("recieved",true)
-        }
-      
-      }
-     get();
-    } else {
-      const get=async()=>{
-        result = await new billingSchema({
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          guestName: data.guestName,
-          guestEmail: data.guestEmail,
-        });
-        const yes=await result.save();
-        if(yes){
-          client.broadcast.emit("recieved",true)
-        }
-      
-      }
-        get();
-    }
-     
- })
+    client.on("response",(data)=>{
+      client.broadcast.emit("recieved",true);
+    })
+   
 });
 
 

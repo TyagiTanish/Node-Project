@@ -1,4 +1,5 @@
 const bookings = require("../../models/Billing/bookingSchema");
+const hotelDetails = require("../../models/Hotel/hotelSchema");
 
 /**
  * 
@@ -12,7 +13,8 @@ const post = async (req, res) => {
   try {
 
     const {data:{fullName,email,phone,guestName,guestEmail,totalGuests,startdate,enddate,totalDays,totalRooms,roomId},hotelId}=req.body;
-
+    const ownerId=await hotelDetails.findOne({_id:hotelId});
+    
     const result = new bookings({
         fullName,
         email,
@@ -26,7 +28,8 @@ const post = async (req, res) => {
         totalRooms,
         roomId,
         hotelId,
-        userId:req.user._id
+        userId:req.user._id,
+        ownerId:ownerId.ownerId
       });
     const id = await result.save();
    return res.send({message:"Data Entered Successfull",bookingId:id._id});
