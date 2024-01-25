@@ -1,12 +1,13 @@
-const billingSchema=require('../../../models/Billing/bookingSchema')
+const bookings = require('../../../models/Billing/bookingSchema');
+
 const hotelDetails=require('../../../models/Hotel/hotelSchema')
 
 module.exports=async(req,res)=>{
     const user=req.user;
-  const data=await billingSchema.findByIdAndDelete(req.id);
-  const result1=await hotelDetails.findOne({ownerId:user?.id});
-  const result2=await billingSchema.find({hotelId:result1?._id});
+  const data=await bookings.findByIdAndDelete(req.id);
+  console.log(data)
+  const result=await bookings.find({ownerId:user._id});
+    res.send(result)
 
-  console.log('delete is ...........',result2)
-  res.send(result2)
+  
 }
