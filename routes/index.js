@@ -18,12 +18,14 @@ const update = require("./User/member/update");
 const rooms = require("./rooms");
 const bookRoom = require("./Billing");
 const bookingDetails = require("./User/member/bookingDetails");
-const bookingDelete=require('./User/member/bookingDelete');
+const bookingDelete = require("./User/member/bookingDelete");
 const getDetails = require("./User/member/getDetails");
 const bookingAccept = require("./User/member/bookingAccept");
 const booking = require("./payment/booking");
 const availability = require("./rooms/availability");
 const paymentSuccess = require("./payment/paymentSuccess");
+const getBooking = require("../routes/Billing/getBooking");
+
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -39,16 +41,18 @@ router.delete("/deleteHotel/:id", extractParam("id"), auth, deleteHotel);
 router.put("/updateUser", update);
 router.use("/deleteRoom", auth, rooms);
 router.use("/deleteRoom/:id", extractParam("id"), rooms);
-router.get('/bookingDetails',auth,bookingDetails)
-router.post('/order',booking)
-router.put('/availability/:id',extractParam('id'),availability);
-router.put('/availability',auth,availability);
-router.get('/bookingDetails',auth,bookingDetails);
-router.delete('/bookingDelete/:id',extractParam("id"),auth,bookingDelete);
+router.get("/bookingDetails", auth, bookingDetails);
+router.post("/order", booking);
+router.put("/availability/:id", extractParam("id"), availability);
+router.put("/availability", auth, availability);
+router.get("/bookingDetails", auth, bookingDetails);
+router.delete("/bookingDelete/:id", extractParam("id"), auth, bookingDelete);
 // router.post('/registerMember',registerMember)
-router.use("/bookRoom",auth,bookRoom);
-router.post('/paymentSuccess',paymentSuccess);
-router.get('/getDetails/:id',extractParam("id"),getDetails)
+router.use("/bookRoom", auth, bookRoom);
+router.use("/getBookings", auth, getBooking);
+router.use("/getBookingDetails/:id", extractParam("id"), getBooking);
+router.post("/paymentSuccess", paymentSuccess);
+router.get("/getDetails/:id", extractParam("id"), getDetails);
 // router.use("/bookRoom", bookRoom);
-router.put('/bookingAccept/:id',extractParam("id"),auth,bookingAccept)
+router.put("/bookingAccept/:id", extractParam("id"), auth, bookingAccept);
 module.exports = router;

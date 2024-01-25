@@ -32,7 +32,7 @@ const post = async (req, res) => {
       var message = {
         from: "umesh.atrii0712@gmail.com",
         // to: req.body.email,
-        to: "vaibhav@prologictechnologies.in",
+        to: "tushar@prologictechnologies.in",
         // html: `  <!DOCTYPE html>
         //           <html lang="en">
         //           <head>
