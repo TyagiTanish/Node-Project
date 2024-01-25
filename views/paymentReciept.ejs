@@ -13,6 +13,8 @@
       .container {
         max-width: 600px;
         margin: 0 auto;
+        box-sizing: border-box;
+        overflow-x: hidden;
       }
 
       .heading {
@@ -36,17 +38,17 @@
 
       .para {
         position: relative;
-        padding-top: 10px;
+        padding-top: 15px;
       }
 
       .para span {
-        margin-top: 10px;
+        margin-top: 15px;
         font-weight: bold;
       }
 
       p span {
         position: absolute;
-        left: 280px;
+        left: 270px;
         top: 0;
       }
 
@@ -56,14 +58,14 @@
 
       @media screen and (max-width: 991px) {
         p span {
-          left: 290px;
+          left: 270px;
           top: 0;
         }
       }
 
       @media screen and (max-width: 768px) {
         p span {
-          left: 290px;
+          left: 270px;
           top: 0;
         }
       }
@@ -74,7 +76,7 @@
         }
 
         p span {
-          left: 275px;
+          left: 255px;
           top: 0;
         }
 
@@ -85,8 +87,15 @@
 
       @media screen and (max-width: 425px) {
         p span {
-          left: 200px;
+          left: 180px;
           top: 0;
+        }
+
+        .move {
+            padding-top: 30px;
+        }
+        .move-down {
+            padding-top: 15px;
         }
 
         .details {
@@ -100,8 +109,15 @@
 
       @media screen and (max-width: 375px) {
         p span {
-          left: 175px;
+          left: 160px;
           top: 0;
+        }
+
+        .move {
+            padding-top: 30px;
+        }
+        .move-down {
+            padding-top: 15px;
         }
 
         .details {
@@ -113,7 +129,11 @@
         }
       }
 
-      @media screen and (max-width: 375px) {
+      /* @media screen and (max-width: 375px) {
+        .para {
+          padding-top: 15px;
+        }
+
         p span {
           left: 175px;
           top: 0;
@@ -126,15 +146,23 @@
         .equi {
           margin-top: 0;
         }
+
         .align1 {
           margin-top: 0;
         }
-      }
+      } */
 
       @media screen and (max-width: 320px) {
         p span {
-          left: 150px;
+          left: 130px;
           top: 0;
+        }
+
+        .move {
+            padding-top: 50px;
+        }
+        .move-down {
+            padding-top: 35px;
         }
 
         .align1 {
@@ -163,23 +191,41 @@
               display: flex;
               display: -webkit-flex;
               display: -ms-flexbox;
+              flex-wrap: wrap;
               padding: 0 30px;
             "
           >
             <div style="width: 50%">
-              <p class="para">Payer's Name <span>:</span></p>
-              <p class="para">TransactionID <span>:</span></p>
-              <p class="para">Transaction Amount <span>:</span></p>
-              <p class="para">Payment Method <span>:</span></p>
-              <p class="para">Status <span>:</span></p>
+              <p class="para">
+                Payer's Name
+                <span>:</span>
+              </p>
+              <p class="para">
+                TransactionID
+                <span>:</span>
+              </p>
+              <p class="para move">
+                Transaction Amount
+                <span class="move-down">:</span>
+              </p>
+              <p class="para">
+                Payment Method
+                <span>:</span>
+              </p>
+              <p class="para">
+                Status
+                <span>:</span>
+              </p>
             </div>
             <div style="width: 50%">
-              <div style="margin-left: 30px">
-                <p style="padding-top: 10px"><%=name%></p>
-                <p style="padding-top: 10px; width: 100%"><%=transactionId%></p>
-                <p style="padding-top: 10px"><%=amount%></p>
-                <p style="padding-top: 10px" class="align1"><%=type%></p>
-                <p style="padding-top: 10px"><%=type%></p>
+              <div style="margin-left: 15px">
+                <p style="padding-top: 15px">Vaibhav</p>
+                <p style="padding-top: 15px; word-wrap: break-word">
+                  jhdgsjgj27667hsdg8ddffetetg456erg
+                </p>
+                <p style="padding-top: 15px">₹1200</p>
+                <p style="padding-top: 15px" class="align1">Card</p>
+                <p style="padding-top: 15px">Paid</p>
               </div>
             </div>
           </div>
