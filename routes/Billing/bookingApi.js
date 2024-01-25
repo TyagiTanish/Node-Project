@@ -1,6 +1,14 @@
 const bookings = require("../../models/Billing/bookingSchema");
 const hotelDetails = require("../../models/Hotel/hotelSchema");
 
+/**
+ * 
+ * @method  POST
+ * @api  /bookRoom
+ * @description  
+ */
+
+
 const post = async (req, res) => {
   try {
 

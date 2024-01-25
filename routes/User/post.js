@@ -2,6 +2,17 @@ const userSchema = require("../../models/UserLogin/userSchema");
 const nodemailer = require("nodemailer");
 const template =
   "/home/prologic/Desktop/project/Node-Project/templates/successRegister.html";
+
+ /**
+ * @method POST
+ * @api 
+ * @description
+ *  - Specify billing split criteria for sessions involving given users
+ */
+
+
+
+
 const post = async (req, res) => {
   try {
     const role = "customer";
