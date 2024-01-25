@@ -1,9 +1,8 @@
-const billingSchema=require('../../../models/Billing/bookingSchema');
-const hotelDetails=require('../../../models/Hotel/hotelSchema')
+const bookings = require('../../../models/Billing/bookingSchema');
+
 module.exports=async(req,res)=>{
     const user=req.user;
-   
-    const data=await hotelDetails.findOne({ownerId:user?.id});
-    const result=await billingSchema.find({hotelId:data?._id});
+    const result=await bookings.find({ownerId:user._id});
+  
     res.send(result)
-} 
+}        

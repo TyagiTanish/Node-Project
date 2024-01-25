@@ -33,7 +33,8 @@ const bookingSchema = new mongoose.Schema({
   
  },
  status:{
-  type:String
+  type:String,
+  default:"pending"
  },
   totalDays: {
     type: String,
@@ -52,7 +53,7 @@ const bookingSchema = new mongoose.Schema({
   },
   hotelId: {
     type: mongoose.Types.ObjectId,
-    ref:'hotelDetails'
+    ref:'hoteldetails'
   },
   paymentStatus: {
     type: String,
@@ -60,7 +61,11 @@ const bookingSchema = new mongoose.Schema({
   },
   userId:{
     type:mongoose.Types.ObjectId,
-    ref:'userDetails'
+    ref:'userdetails'
+  },
+  ownerId:{
+    type: mongoose.Types.ObjectId,
+    ref:'userdetails'
   }
 });
 const bookings = mongoose.model("bookings", bookingSchema);
