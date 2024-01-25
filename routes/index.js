@@ -24,7 +24,9 @@ const bookingAccept = require("./User/member/bookingAccept");
 const booking = require("./payment/booking");
 const availability = require("./rooms/availability");
 const paymentSuccess = require("./payment/paymentSuccess");
-const getBooking = require("../routes/Billing/getBooking");
+const acceptedBookings = require("./User/member/acceptedBookings");
+
+
 
 router.use("/auth", authentication);
 router.use("/register", user);
@@ -54,5 +56,6 @@ router.use("/getBookingDetails/:id", extractParam("id"), getBooking);
 router.post("/paymentSuccess", paymentSuccess);
 router.get("/getDetails/:id", extractParam("id"), getDetails);
 // router.use("/bookRoom", bookRoom);
-router.put("/bookingAccept/:id", extractParam("id"), auth, bookingAccept);
+router.put('/bookingAccept/:id',extractParam("id"),auth,bookingAccept);
+router.get('/acceptedBookings',auth,acceptedBookings)
 module.exports = router;
