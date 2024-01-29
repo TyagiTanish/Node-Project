@@ -59,6 +59,7 @@ const bookingSchema = new mongoose.Schema({
   },
   roomId: {
     type: mongoose.Types.ObjectId,
+    
   },
   hotelId: {
     type: mongoose.Types.ObjectId,
