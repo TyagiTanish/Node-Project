@@ -13,7 +13,9 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+body{
+    overflow-x: hidden;
+}
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -57,6 +59,10 @@ p {
     border: 1px solid black;
     padding: 20px;
 }
+.row{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+}
     </style>
 
 </head>
@@ -70,40 +76,39 @@ p {
                         <div class="col-6">
                             <div class="text-left">
                                 <div>
-                                    <h2 class="mb-3">OYO</h2>
-                                    <p>123 street</p>
-                                    <p>Chandigarh</p>
-                                    <p>address line 3</p>
+                                    <h2 class="mb-3"><%=hotelName%></h2>
+                                    <p><%=addressLine1%></p>
+                                    <p><%=addressLine2%></p>
                                 </div><br>
                                 <div>
-                                    <p>(123) 456 789</p>
-                                    <p>email@oyo.com</p>
+                                    <p><%=phone%></p>
+                                    <p><%=email%></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="text-end">
                                 <div>
-                                    <h2 class="mb-3">INVOICE</h2>
-                                    <p>dd/mm/yy</p>
+                                    <h2 class="mb-3">Reciept</h2>
+                                    <p><%=date%></p>
                                     <p>invoice <span id="invoice-id"></span></p>
-                                    <p>PO 1234567897</p>
+                                    <p style="word-wrap: break-word;line-height: 1.2;" ><%=transactionId%></p>
                                 </div><br>
-                                <div>
-                                    <p>Att: <span id="client-name">Mr. John Doe</span></p>
-                                    <p>Client company name</p>
-                                </div>
+                                <!-- <div>
+                                    <p>Att: <span id="client-name"></span></p>
+                                    <p></p>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="px-5 py-4 line-spacing">
-                            <p>Dear <span id="client-name0"></span>,</p><br>
-                            <p class="text-line-spacing">We have successfully recieved your payment.</p><br>
-                            <p>Many thanks,</p>
-                            <p><span id="oyo-support">Your Name</span></p>
+                        <div class="px-5 py-4">
+                            <p>Dear<span id="client-name0"><%=name%></span>,</p>
+                            <p class="text-line-spacing">We have successfully recieved your Booking Request.</p>
+                            <p>Many thanks</p>
+                            <p><span id="oyo-support"></span></p>
                         </div>
                     </div>
                 </div>
@@ -113,16 +118,17 @@ p {
                             <th>#</th>
                             <th>Room Description</th>
                             <th>Desc</th>
-                            <th>No. of roomss</th>
+                            <th>No. of rooms</th>
                             <th>Amount</th>
                             <th>Total(₹)</th>
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><%=roomType%></td>
+                            <td><%=days%> Night</td>
+                            <td><%=totalRooms%></td>
+                            <td><%=amount%></td>
+                            <td><%=totalRoomPrice%></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -130,18 +136,19 @@ p {
                             <td></td>
                             <td></td>
                             <td></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <th colspan="4">Subtotal</th>
-                            <td>0.00</td>
+                            <td colspan="2" >0.00</td>
                         </tr>
                         <tr>
                             <th colspan="4">Sales Tax</th>
-                            <td>0.00</td>
+                            <td colspan="2" >0.00</td>
                         </tr>
                         <tr>
                             <th colspan="4">Total</th>
-                            <td>0.00</td>
+                            <td  colspan="2"><%=totalRoomPrice%></td>
                         </tr>
                     </table>
                     <p class="px-5 py-4">
