@@ -9,7 +9,7 @@ module.exports=async(req,res)=>{
             country:req.body.country,
             pinCode:req.body.pinCode,
             discription:req.body.discription,
-          
+            categories:JSON.parse(req.body.categories)
         })
         const result1=await userDetails.findByIdAndUpdate(req.body.ownerId,{
             name:req.body.name,
@@ -30,6 +30,7 @@ module.exports=async(req,res)=>{
         pinCode:req.body.pinCode,
         discription:req.body.discription,
         photo: req?.file?.path,
+        categories:JSON.parse(req.body.categories)
     })
     const result1=await userDetails.findByIdAndUpdate(req.body.ownerId,{
         name:req.body.name,

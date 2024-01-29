@@ -45,9 +45,6 @@ module.exports = async (req, res) => {
     photos.map((photo) => {
       fs.unlink(photo.path, (err) => {
         if (err) console.log(err);
-        else {
-          console.log(`${photo.path} Deleted successfully`);
-        }
       });
     });
     res.send(true);

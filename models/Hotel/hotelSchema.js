@@ -71,6 +71,10 @@ const hotelSchema = new mongoose.Schema(
     discription: {
       type: String,
     },
+    categories:{
+      type:Array,
+      default:['Sweet','Deluxe','Super Deluxe']
+    }
   },
   { timestamps: true }
 );
