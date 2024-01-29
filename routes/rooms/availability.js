@@ -18,13 +18,14 @@ module.exports = async (req,res) =>{
             })
             res.send(true)
         }else{
-            const hotel = await hotelDetails.find({_id:req.id});
-            const rooms = hotel?.map((room)=>{
+            const hotel = await hotelDetails.findOne({_id:req.id});
+            const rooms = hotel?.rooms?.map((room)=>{
                 if(String(room._id) === String(req.body.roomId)){
                     room.isAvailable = req.body.isAvailable
                 }
                 return room
             })
+
             await hotelDetails.findByIdAndUpdate({_id:hotel._id},{
                 $set:{
                     rooms:rooms

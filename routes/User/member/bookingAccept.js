@@ -19,6 +19,27 @@ module.exports=async(req,res)=>{
     const data= await bookings.findByIdAndUpdate(id,{
         status:"accepted"
     }).populate('ownerId').populate('hotelId').populate('userId')
+    
+// Update the Quantity of Available Rooms 
+
+let roomId = data?.roomId;
+let hotelId = data?.hotelId;
+
+const hotel = await hotelDetails.findOne({_id:hotelId});
+
+let rooms = hotel?.rooms?.map((room)=>{
+    if(room?._id === roomId){
+        let roomQuantity = +room?.roomQuantity - +data?.totalRooms;
+        room.roomQuantity = String(roomQuantity) 
+    }   
+    return room
+})
+
+await hotelDetails.updateOne({_id:hotelId},{
+    $set:{
+        rooms:rooms
+    }
+})
 
     const paymentDetails = await payments.findOne({bookingId:id})
     const hotelName = data?.hotelId?.hotelName;
