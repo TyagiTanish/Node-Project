@@ -39,6 +39,8 @@ body{
 
 table {
     width: 100%;
+    margin-top: 15%;
+    margin-bottom: 5%;
 }
 
 table,
@@ -102,10 +104,10 @@ p {
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-top: 5%;"  >
                     <div class="col-12">
                         <div class="px-5 py-4">
-                            <p>Dear<span id="client-name0"><%=name%></span>,</p>
+                            <p>Dear<span id="client-name0"> <%=name%></span>,</p>
                             <p class="text-line-spacing">We have successfully recieved your Booking Request.</p>
                             <p>Many thanks</p>
                             <p><span id="oyo-support"></span></p>
@@ -123,12 +125,12 @@ p {
                             <th>Total(₹)</th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td><%=roomType%></td>
-                            <td><%=days%> Night</td>
-                            <td><%=totalRooms%></td>
-                            <td><%=amount%></td>
-                            <td><%=totalRoomPrice%></td>
+                            <td style="width: 10%;"  >1</td>
+                            <td style="width: 20%;"  ><%=roomType%></td>
+                            <td style="width: 20%;" ><%=days%> Night</td>
+                            <td style="width: 20%;" ><%=totalRooms%></td>
+                            <td style="width: 20%;" ><%=amount%></td>
+                            <td style="width: 20%;text-align: right;" ><%=totalRoomPrice%></td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -139,16 +141,16 @@ p {
                             <td></td>
                         </tr>
                         <tr>
-                            <th colspan="4">Subtotal</th>
-                            <td colspan="2" >0.00</td>
+                            <th colspan="5">Subtotal</th>
+                            <td colspan="1" style="text-align: right;"><%=totalRoomPrice%></td>
                         </tr>
                         <tr>
-                            <th colspan="4">Sales Tax</th>
-                            <td colspan="2" >0.00</td>
+                            <th colspan="5">Sales Tax</th>
+                            <td colspan="1"  style="text-align: right;">0.00</td>
                         </tr>
                         <tr>
-                            <th colspan="4">Total</th>
-                            <td  colspan="2"><%=totalRoomPrice%></td>
+                            <th colspan="5">Total</th>
+                            <td  colspan="1"  style="text-align: right;"><%=totalRoomPrice%></td>
                         </tr>
                     </table>
                     <p class="px-5 py-4">
