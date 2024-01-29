@@ -48,7 +48,7 @@
 
       p span {
         position: absolute;
-        left: 270px;
+        left: 240px;
         top: 0;
       }
 
@@ -58,14 +58,14 @@
 
       @media screen and (max-width: 991px) {
         p span {
-          left: 270px;
+          left: 240px;
           top: 0;
         }
       }
 
       @media screen and (max-width: 768px) {
         p span {
-          left: 270px;
+          left: 25  0px;
           top: 0;
         }
       }
@@ -76,7 +76,7 @@
         }
 
         p span {
-          left: 255px;
+          left: 245px;
           top: 0;
         }
 
@@ -195,7 +195,7 @@
               padding: 0 30px;
             "
           >
-            <div style="width: 50%">
+            <div style="width: 45%">
               <p class="para">
                 Payer's Name
                 <span>:</span>
@@ -217,15 +217,15 @@
                 <span>:</span>
               </p>
             </div>
-            <div style="width: 50%">
+            <div style="width: 60%">
               <div style="margin-left: 15px">
                 <p style="padding-top: 15px"><%=name%></p>
                 <p style="padding-top: 15px; word-wrap: break-word">
                   <%=transactionId%>
                 </p>
-                <p style="padding-top: 15px">₹<%amount%></p>
-                <p style="padding-top: 15px" class="align1">Card</p>
-                <p style="padding-top: 15px">Paid</p>
+                <p style="padding-top: 15px">₹<%=amount%></p>
+                <p style="padding-top: 15px" class="align1"><%=type%></p>
+                <p style="padding-top: 15px"><%=paymentStatus%></p>
               </div>
             </div>
           </div>

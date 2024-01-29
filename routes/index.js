@@ -25,6 +25,7 @@ const booking = require("./payment/booking");
 const availability = require("./rooms/availability");
 const paymentSuccess = require("./payment/paymentSuccess");
 const acceptedBookings = require("./User/member/acceptedBookings");
+const getBooking = require("./Billing/getBooking");
 
 
 
