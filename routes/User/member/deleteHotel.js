@@ -3,11 +3,11 @@ const userSchema = require("../../../models/UserLogin/userSchema");
 const fs = require("fs");
 module.exports = async (req, res) => {
   const data = await hotelDetails.find({ _id: req.id });
-  console.log(data[0].photo);
-  fs.unlink(data[0].photo, (err) => {
+  console.log(data[0]?.photo);
+  fs.unlink(data[0]?.photo, (err) => {
     if (err) console.log(err);
     else {
-      console.log(`${data[0].photo} Deleted successfully`);
+      console.log(`${data[0]?.photo} Deleted successfully`);
     }
   });
   if (data[0].rooms !== undefined) {
