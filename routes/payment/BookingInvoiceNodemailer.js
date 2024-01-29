@@ -44,6 +44,7 @@ module.exports = async (
       pass: "zscojnmjdcbisfwo",
     },
   });
+  console.log('hello');
   var message = {
     from: "umesh.atrii0712@gmail.com",
     to: "tanish@prologictechnologies.in",
