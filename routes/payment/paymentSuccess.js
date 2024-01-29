@@ -28,6 +28,6 @@ module.exports = async (req,res) =>{
     const bookingDetails = await bookings.findOne({_id:bookingId});
     const email = bookingDetails?.email
     const name = bookingDetails?.fullName
-    await PaymentReceiptNodemailer(email,name,transactionId,amount_captured,'card','paid');
+    // await PaymentReceiptNodemailer(email,name,transactionId,amount_captured,'card','paid');
     res.send('success')
 }
