@@ -24,7 +24,7 @@ const buffer = await htmlPdfConvert(template,key);
       });
       var message = {
         from: "umesh.atrii0712@gmail.com",
-        to: 'tanish@prologictechnologies.in',
+        to: 'pallavi@prologictechnologies.in',
         subject: "thank you",
         html:`<h5>Here is Your payment Reciept<h5>`,
         attachments: [
