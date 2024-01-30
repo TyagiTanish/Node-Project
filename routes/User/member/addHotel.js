@@ -16,7 +16,7 @@ const post = async (req, res) => {
         state: req.body.state,
         photo: req.files[0].path,
         location: { latitude: req.body.lat, longitude: req.body.lng },
-        amenities: req.body.amenities,
+        amenities: JSON.parse(req.body.amenities),
         discription: req.body.discription,
         rooms: [],
       });
