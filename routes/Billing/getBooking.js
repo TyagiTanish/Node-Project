@@ -15,15 +15,16 @@ module.exports = async (req, res) => {
         .find({ _id: req.id })
         .populate("hotelId")
         .populate("userId");
-      const bookingId = data[0]._id;
+      // console.log(data);
+      // const bookingId = data[0]._id;
       // console.log(bookingId);
-      const paymentData = await payments.find();
-      const id = paymentData[0].bookingId;
-
-      const Data = await payments.find({ bookingId: bookingId });
+      // const paymentData = await payments.find();
+      // const id = paymentData[0].bookingId;
+      // console.log(paymentData);
+      // const Data = await payments.find({ bookingId: bookingId });
       // data.price = paymentData[0]?.amount;
-      console.log(Data);
-      // res.send(data);
+      // console.log(Data);
+      res.send(data);
     }
   } catch (err) {
     console.log(err);

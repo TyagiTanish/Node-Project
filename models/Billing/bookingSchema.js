@@ -34,17 +34,19 @@ const bookingSchema = new mongoose.Schema({
   status: {
     type: String,
   },
-  hotelId:{
-    type:String
+  hotelId: {
+    type: String,
   },
-  roomId:{
-      type:String
-  
- },
- status:{
-  type:String,
-  default:"pending"
- },
+  roomId: {
+    type: String,
+  },
+  price: {
+    type: String,
+  },
+  status: {
+    type: String,
+    default: "pending",
+  },
   totalDays: {
     type: String,
   },
@@ -59,24 +61,23 @@ const bookingSchema = new mongoose.Schema({
   },
   roomId: {
     type: mongoose.Types.ObjectId,
-    
   },
   hotelId: {
     type: mongoose.Types.ObjectId,
-    ref:'hoteldetails'
+    ref: "hoteldetails",
   },
   paymentStatus: {
     type: String,
     default: "unpaid",
   },
-  userId:{
-    type:mongoose.Types.ObjectId,
-    ref:'userdetails'
-  },
-  ownerId:{
+  userId: {
     type: mongoose.Types.ObjectId,
-    ref:'userdetails'
-  }
+    ref: "userdetails",
+  },
+  ownerId: {
+    type: mongoose.Types.ObjectId,
+    ref: "userdetails",
+  },
 });
 const bookings = mongoose.model("bookings", bookingSchema);
 module.exports = bookings;
