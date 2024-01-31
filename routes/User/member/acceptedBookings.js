@@ -56,7 +56,7 @@ module.exports=async(req,res)=>{
 }        
  /**
  * @method GET
- * @api /acceptedBookings/externalRelation
+ * @api /acceptedBookings
  * @description
  *  - To get booking Details that are accepted by the Owner
  */
