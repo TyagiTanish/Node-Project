@@ -3,49 +3,40 @@ const hotelSchema = new mongoose.Schema(
   {
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref:'userdetails'
-    
+      ref: "userdetails",
     },
     hotelName: {
       type: String,
-
     },
 
     location: {
       latitude: {
         type: String,
-       
       },
       longitude: {
         type: String,
-   
       },
     },
     photo: {
       type: String,
-   
     },
     city: {
       type: String,
-
     },
     state: {
       type: String,
-    
     },
     country: {
       type: String,
- 
     },
     pinCode: {
       type: String,
- 
     },
     rooms: [
       {
-        roomQuantity:{
-          type:String,
-          required:true
+        roomQuantity: {
+          type: String,
+          required: true,
         },
         roomType: {
           type: String,
@@ -56,25 +47,29 @@ const hotelSchema = new mongoose.Schema(
           type: Object,
           required: false,
         },
-        amenities:[],
+        amenities: [],
         discription: {
           type: String,
           required: true,
         },
-        isAvailable:{
-          type:String,
-          default:true,
-        }
+        isAvailable: {
+          type: String,
+          default: true,
+        },
       },
     ],
     amenities: [],
     discription: {
       type: String,
     },
-    categories:{
-      type:Array,
-      default:['Sweet','Deluxe','Super Deluxe']
-    }
+    categories: {
+      type: Array,
+      default: ["Sweet", "Deluxe", "Super Deluxe"],
+    },
+    isDeleted: {
+      type: String,
+      default: false,
+    },
   },
   { timestamps: true }
 );
