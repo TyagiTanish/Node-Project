@@ -29,7 +29,7 @@ module.exports=async(req,res)=>{
                 .populate('ownerId').populate('hotelId').populate("roomId");
                res.send(result)
             }
-           
+            
            else{
             const result=await bookings.find({ownerId:user._id,  $or: [
                 { 'hotelId.hotelName': { $regex: search, $options: 'i' } },
