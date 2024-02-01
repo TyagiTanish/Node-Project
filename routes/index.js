@@ -28,7 +28,11 @@ const acceptedBookings = require("./User/member/acceptedBookings");
 const getBooking = require("./Billing/getBooking");
 const setRoomQuantity = require("./rooms/setRoomQuantity");
 const getAllMembers = require("./User/member/getAllMembers");
+
 const getHotelForParticularMember = require("./Hotels/getHotelsForParticularMember");
+
+const getAllUsers = require("./User/member/getAllUsers");
+
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -60,6 +64,7 @@ router.use("/getBookingDetails/:id", extractParam("id"), getBooking);
 router.post("/paymentSuccess", paymentSuccess);
 router.get("/getDetails/:id", extractParam("id"), getDetails);
 router.get("/getAllMembers", auth, getAllMembers);
+router.get("/getAllUsers", auth, getAllUsers);
 router.put("/bookingAccept/:id", extractParam("id"), auth, bookingAccept);
 router.get("/acceptedBookings", auth, acceptedBookings);
 router.put("/setRoomQuantity/:id", extractParam("id"), setRoomQuantity);
