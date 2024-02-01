@@ -14,7 +14,7 @@ const EditRooms = require("./routes/rooms/EditRooms");
 const updateHotel=require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
 const { Server } = require('socket.io');
-const https = require('https');
+const http = require('http');
 const bookings = require("./models/Billing/bookingSchema");
 const fs = require('fs')
 const path = require('path')
@@ -31,19 +31,21 @@ dotenv.config();
 //   ],
 // };
 
-const options = {
-  key: fs.readFileSync('./security/key.pem'),
-  cert: fs.readFileSync('./security/cert.pem')
-};
+
+//Security certificate
+// const options = {
+//   key: fs.readFileSync('./security/key.pem'),
+//   cert: fs.readFileSync('./security/cert.pem')
+// };
 
 
 app.use(cors())
 // const server = require("http").createServer();
-const server = https.createServer(options,app);
+const server = http.createServer(app);
 
     const io = new Server(server, {
       cors: {
-        origin: "https://localhost:3000",
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"],
       },
     });
@@ -102,5 +104,5 @@ connect();
 PORT = 8000;
 
 server.listen(PORT, () => {
-  console.log(`Listening on port https://localhost:${8000}....`);
+  console.log(`Listening on port http://localhost:${8000}....`);
 });
