@@ -77,14 +77,10 @@ app.post("/uploadRooms",auth,extractParam("id"),upload.array("files",4), addRoom
 app.post('/editRoom',auth,upload.array("files",4),EditRooms)
 app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
 app.post("/uploadRooms",auth,upload.array("files"), addRooms);
-app.put('/updateHotel', upload.single('files'),updateHotel)
+app.put('/updateHotel', upload.single('files'),updateHotel);
+
 connect();
 
-// app.use((err,req,res)=>{
-//   res.status(err?.statusCode ||500).json({
-//     message: err.message ?? "Server error. Please try again later.",
-//   });
-// })
 
 server.listen(8000, () => {
   console.log("Listening on port 8000....");

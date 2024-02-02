@@ -29,7 +29,7 @@ const getBooking = require("./Billing/getBooking");
 const setRoomQuantity = require("./rooms/setRoomQuantity");
 const getAllMembers = require("./User/member/getAllMembers");
 const getAllUsers = require("./User/member/getAllUsers");
-
+const updateAmeneties=require('./User/member/updateAmeneties')
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -66,4 +66,5 @@ router.put("/bookingAccept/:id", extractParam("id"), auth, bookingAccept);
 router.get("/acceptedBookings", auth, acceptedBookings);
 router.put("/setRoomQuantity/:id", extractParam("id"), setRoomQuantity);
 router.put("/setRoomQuantity", auth, setRoomQuantity);
+router.post('/updateAmeneties/:id',extractParam("id"),updateAmeneties)
 module.exports = router;
