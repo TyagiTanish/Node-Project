@@ -78,6 +78,10 @@ const bookingSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "userdetails",
   },
+  arrival:{
+    type:String,
+    default:""
+  }
 });
 const bookings = mongoose.model("bookings", bookingSchema);
 module.exports = bookings;

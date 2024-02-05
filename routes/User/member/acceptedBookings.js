@@ -37,7 +37,8 @@ module.exports=async(req,res)=>{
                 { bookFrom: { $regex: search, $options: "i" } },
         
                 { bookTo: { $regex: search, $options: "i" } },
-                
+                { paymentStatus: { $regex: search, $options: "i" } },
+                { status: { $regex: search, $options: "i" } },
               ],})
             .limit(limit)
             .skip(limit * page)
