@@ -27,7 +27,7 @@ module.exports=async(req,res)=>{
                 .skip(limit * page)
                 .sort({ [orderby]: sortby })
                 .populate('ownerId').populate('hotelId').populate("roomId");
-               res.send(result)
+               res.send(result);
             }
             
            else{

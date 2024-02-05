@@ -21,22 +21,6 @@ const path = require('path')
 
 dotenv.config();
 // const corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   allowedHeaders: [
-//     "Content-Type",
-//     "Authorization",
-//     "Access-Control-Allow-Credentials",
-//   ],
-// };
-
-
-//Security certificate
-// const options = {
-//   key: fs.readFileSync('./security/key.pem'),
-//   cert: fs.readFileSync('./security/cert.pem')
-// };
 
 
 app.use(cors())
