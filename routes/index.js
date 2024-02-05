@@ -32,7 +32,8 @@ const getAllMembers = require("./User/member/getAllMembers");
 const getHotelForParticularMember = require("./Hotels/getHotelsForParticularMember");
 
 const getAllUsers = require("./User/member/getAllUsers");
-const updateAmeneties=require('./User/member/updateAmeneties')
+const updateAmeneties=require('./User/member/updateAmeneties');
+const updateArrival = require("./User/member/updateArrival");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -75,4 +76,5 @@ router.get(
   extractParam("id"),
   getHotelForParticularMember
 );
+router.put('/updateArrival/:id', extractParam("id"), updateArrival)
 module.exports = router;
