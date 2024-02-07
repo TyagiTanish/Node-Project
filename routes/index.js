@@ -28,11 +28,11 @@ const acceptedBookings = require("./User/member/acceptedBookings");
 const getBooking = require("./Billing/getBooking");
 const setRoomQuantity = require("./rooms/setRoomQuantity");
 const getAllMembers = require("./User/member/getAllMembers");
-
+const hotelAvalability = require("./Hotels/hotelAvailabilty");
 const getHotelForParticularMember = require("./Hotels/getHotelsForParticularMember");
 
 const getAllUsers = require("./User/member/getAllUsers");
-const updateAmeneties=require('./User/member/updateAmeneties');
+const updateAmeneties = require("./User/member/updateAmeneties");
 const updateArrival = require("./User/member/updateArrival");
 const GetReciept = require("./Reciept/GetReciept");
 const getData = require("./User/member/getData");
@@ -69,19 +69,18 @@ router.get("/getDetails/:id", extractParam("id"), getDetails);
 router.get("/getAllMembers", auth, getAllMembers);
 router.get("/getAllUsers", auth, getAllUsers);
 router.put("/bookingAccept/:id", extractParam("id"), auth, bookingAccept);
-router.get("/acceptedBookings", auth, acceptedBookings);  
+router.get("/acceptedBookings", auth, acceptedBookings);
 router.put("/setRoomQuantity/:id", extractParam("id"), setRoomQuantity);
 router.put("/setRoomQuantity", auth, setRoomQuantity);
-router.post('/updateAmeneties/:id',extractParam("id"),updateAmeneties)
+router.post("/updateAmeneties/:id", extractParam("id"), updateAmeneties);
 router.get(
   "/getHotelForParticularMember/:id",
   extractParam("id"),
   getHotelForParticularMember
 );
-router.get('/getData', auth,getData)
-router.put('/updateArrival/:id', extractParam("id"), updateArrival)
-router.get('/viewReciept',GetReciept);
-
-
+router.put("/setHotelAvailability", auth, hotelAvalability);
+router.get("/getData", auth, getData);
+router.put("/updateArrival/:id", extractParam("id"), updateArrival);
+router.get("/viewReciept", GetReciept);
 
 module.exports = router;
