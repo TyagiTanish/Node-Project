@@ -70,7 +70,12 @@ const hotelSchema = new mongoose.Schema(
       type: String,
       default: false,
     },
+    availability: {
+      type: String,
+      default: true,
+    },
   },
+
   { timestamps: true }
 );
 
