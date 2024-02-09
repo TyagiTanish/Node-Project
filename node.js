@@ -17,7 +17,8 @@ const { Server } = require('socket.io');
 const http = require('http');
 const bookings = require("./models/Billing/bookingSchema");
 const fs = require('fs')
-const path = require('path')
+const path = require('path');
+const bookingRemainder = require("./routes/cron-jobs/remainders/bookingRemainder");
 
 dotenv.config();
 // const corsOptions = {
@@ -42,6 +43,9 @@ io.on("connection", (client) => {
     })
    
 });
+
+
+bookingRemainder();
 
 
 const storage = multer.diskStorage({ 

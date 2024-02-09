@@ -8,14 +8,12 @@ module.exports = async (req, res) => {
         { _id: req.body.id },
         { $set: { availability: true } }
       );
-      console.log(data);
       res.send(true);
     } else {
       const data = await hotelSchema.findByIdAndUpdate(
         { _id: req.body.id },
         { $set: { availability: false } }
       );
-      console.log(data);
       res.send(false);
     }
     // console.log(data);
