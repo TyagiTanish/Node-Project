@@ -5,7 +5,7 @@ const bookingRemainderMail = require('./bookingRemainderMail')
 
 module.exports = () => {
   const remainder = (Bookings) => {
-    Bookings.map((booking) => {
+    Bookings.map(async(booking) => {
       const bookingDate = new Date(booking?.bookFrom).getDate();
       const curretDate = new Date(Date.now()).getDate();
 
@@ -16,6 +16,12 @@ module.exports = () => {
       ) {
           if (bookingDate - curretDate <= 1 && bookingDate - curretDate >= 0) {
             bookingRemainderMail()
+            await bookings?.findByIdAndUpdate({_id:booking._id},{
+                $set:{
+                  reminder:'true'
+                }
+              })
+
           }
       }
     });

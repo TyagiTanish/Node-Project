@@ -81,6 +81,10 @@ const bookingSchema = new mongoose.Schema({
   arrival:{
     type:String,
     default:""
+  },
+  reminder:{
+    type:String,
+    default:'false'
   }
 });
 const bookings = mongoose.model("bookings", bookingSchema);

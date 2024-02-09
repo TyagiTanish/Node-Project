@@ -36,6 +36,7 @@ const updateAmeneties = require("./User/member/updateAmeneties");
 const updateArrival = require("./User/member/updateArrival");
 const GetReciept = require("./Reciept/GetReciept");
 const getData = require("./User/member/getData");
+const GetReminders = require("./User/member/GetReminders");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -81,5 +82,6 @@ router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);
 router.get("/viewReciept", GetReciept);
+router.get('/getReminders',GetReminders)
 
 module.exports = router;
