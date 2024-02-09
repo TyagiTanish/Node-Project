@@ -57,7 +57,6 @@ router.put("/availability/:id", extractParam("id"), availability);
 router.put("/availability", auth, availability);
 router.get("/bookingDetails", auth, bookingDetails);
 router.delete("/bookingDelete/:id", extractParam("id"), auth, bookingDelete);
-// router.post('/registerMember',registerMember)
 router.use("/bookRoom", auth, bookRoom);
 router.post("/paymentSuccess", auth, paymentSuccess);
 router.get("/getDetails/:id", extractParam("id"), getDetails);
