@@ -3,61 +3,61 @@ const hotelDetails = require("../../models/Hotel/hotelSchema");
 module.exports = async (req, res) => {
   try {
     if (!req.id) {
-      if(Object.keys(req.query).length === 0){
-       
-        const data = await hotelDetails.find({}).populate('ownerId');
+      if (Object.keys(req.query).length === 0) {
+        const data = await hotelDetails.find({}).populate("ownerId");
         res.send(data);
-      }
-      else{
-        const search=req.query.search;
-       
-        if(search===""){
+      } else {
+        const search = req.query.search;
 
-        const data = await hotelDetails.find({}).populate('ownerId');
-        res.send(data);
-        }
-        else{
-          const data = await hotelDetails.find({$or: [
-            { hotelName: { $regex: search, $options: 'i' } },
-           
-            
-          ]}).populate('ownerId');
+        if (search === "") {
+          const data = await hotelDetails.find({}).populate("ownerId");
           res.send(data);
+        } else {
+          if (typeof search == "string") {
+            const data = await hotelDetails
+              .find({
+                $or: [
+                  { hotelName: { $regex: search, $options: "i" } },
+                  { city: { $regex: search, $options: "i" } },
+                  { state: { $regex: search, $options: "i" } },
+                ],
+              })
+              .populate("ownerId");
+            res.send(data);
+          } else if (typeof search === "object") {
+            const latitude = Math.floor(search.latitude);
+            const longitude = Math.floor(search.longitude);
+            const data = await hotelDetails
+              .find({
+                "location.latitude": { $regex: latitude, $options: "i" },
+                "location.longitude": { $regex: longitude, $options: "i" },
+              })
+              .populate("ownerId");
 
+            res.send(data);
+          }
         }
-      
       }
-   
     } else {
-      
-      if(Object.keys(req.query).length === 0){
-      
-        const data = await hotelDetails.find({ _id: req.id});
+      if (Object.keys(req.query).length === 0) {
+        const data = await hotelDetails.find({ _id: req.id });
         res.send(data);
-      }
-      else{
-
-        const search=req.query.search;
-        if(search===""){
-          const data = await hotelDetails.find({ _id: req.id});
+      } else {
+        const search = req.query.search;
+        if (search === "") {
+          const data = await hotelDetails.find({ _id: req.id });
           res.send(data);
-
-        }
-        else{
-          const data = await hotelDetails.find({ _id: req.id,$or: [
-            {hotelName: { $regex: search, $options: 'i' } },
-          
-            
-          ]})
+        } else {
+          const data = await hotelDetails.find({
+            _id: req.id,
+            $or: [{ hotelName: { $regex: search, $options: "i" } }],
+          });
           res.send(data);
         }
-       
       }
-
-
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.send(error);
   }
 
