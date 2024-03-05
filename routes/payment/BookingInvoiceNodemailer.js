@@ -40,12 +40,12 @@ module.exports = async (
     secure: false,
     requireTLS: true,
     auth: {
-      user: "umesh.atrii0712@gmail.com",
-      pass: "zscojnmjdcbisfwo",
+      user: "teamoyo321@gmail.com",
+      pass: process.env.EMAILSecurity,
     },
   });
   var message = {
-    from: "umesh.atrii0712@gmail.com",
+    from: "teamoyo321@gmail.com",
     to: "tanish@prologictechnologies.in",
     subject: "thank you",
     html: `<h5>Here is Your payment Reciept<h5>`,

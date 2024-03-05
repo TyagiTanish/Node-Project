@@ -11,7 +11,7 @@ const addHotel = require("./routes/User/member/addHotel");
 const addRooms = require("./routes/rooms/addRooms");
 const extractParam = require("./middlewares/extractParams/extractParams");
 const EditRooms = require("./routes/rooms/EditRooms");
-const updateHotel=require('./routes/User/member/updateHotel');
+const updateHotel = require('./routes/User/member/updateHotel');
 const auth = require("./middlewares/auth");
 const { Server } = require('socket.io');
 const http = require('http');
@@ -28,27 +28,27 @@ app.use(cors())
 // const server = require("http").createServer();
 const server = http.createServer(app);
 
-    const io = new Server(server, {
-      cors: {
-        origin: "http://localhost:3000",
-        methods: ["GET", "POST"],
-      },
-    });
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 
 
 io.on("connection", (client) => {
-    client.on("response",(data)=>{
-      client.broadcast.emit("recieved",true);
-    })
-   
+  client.on("response", (data) => {
+    client.broadcast.emit("recieved", true);
+  })
+
 });
 
 
 bookingRemainder();
 
 
-const storage = multer.diskStorage({ 
+const storage = multer.diskStorage({
   destination: function (req, files, cb) {
     let fileLocation = "./Images/";
     // let fileLocation = "/home/prologic/Documents";
@@ -75,17 +75,16 @@ app.use(cors());
 app.use("/", routes);
 app.post("/registerMember", upload.array("files"), memberRegister);
 app.post("/addHotel", upload.array("files"), addHotel);
-app.post("/uploadRooms/:id",extractParam("id"),upload.array("files",4), addRooms);
-app.post("/uploadRooms",auth,extractParam("id"),upload.array("files",4), addRooms);
-app.post('/editRoom',auth,upload.array("files",4),EditRooms)
-app.post('/editRoom/:id',extractParam("id"),upload.array("files",4),EditRooms)
-app.post("/uploadRooms",auth,upload.array("files"), addRooms);
-app.put('/updateHotel', upload.single('files'),updateHotel);
+app.post("/uploadRooms/:id", extractParam("id"), upload.array("files", 4), addRooms);
+app.post("/uploadRooms", auth, extractParam("id"), upload.array("files", 4), addRooms);
+app.post('/editRoom', auth, upload.array("files", 4), EditRooms)
+app.post('/editRoom/:id', extractParam("id"), upload.array("files", 4), EditRooms)
+app.post("/uploadRooms", auth, upload.array("files"), addRooms);
+app.put('/updateHotel', upload.single('files'), updateHotel);
 
 connect();
+const PORT = 8000;
 
-
-PORT = 8000;
 
 server.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${8000}....`);
