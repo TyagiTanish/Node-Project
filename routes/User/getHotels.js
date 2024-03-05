@@ -79,8 +79,6 @@ module.exports = async (req, res) => {
 
 
             if (price) {
-
-
               const latitude = Math.floor(search.latitude);
               const longitude = Math.floor(search.longitude);
               const data = await hotelDetails
@@ -89,7 +87,7 @@ module.exports = async (req, res) => {
                   "location.longitude": { $regex: longitude, $options: "i" },
                 })
                 .populate("ownerId");
-              res.send(data);
+              // res.send(data);
               const hotels = data.filter((hotel) => {
                 const rooms = hotel?.rooms.map((room) => {
                   if (
