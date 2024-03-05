@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         const search = req.query.search;
         const price = req.query.price;
 
-        if (search === "") {
+        if (search === "" || search === undefined) {
           const data = await hotelDetails.find({}).populate("ownerId");
           if (price) {
             const hotels = data.filter((hotel) => {
@@ -117,9 +117,6 @@ module.exports = async (req, res) => {
                 .populate("ownerId");
               res.send(data);
             }
-
-
-            res.send(data);
           }
         }
       }
