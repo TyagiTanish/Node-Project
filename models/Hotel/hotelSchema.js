@@ -64,7 +64,7 @@ const hotelSchema = new mongoose.Schema(
     },
     categories: {
       type: Array,
-      default: ["Sweet", "Deluxe", "Super Deluxe"],
+      default: ["Suite", "Deluxe", "Super Deluxe"],
     },
     isDeleted: {
       type: String,

@@ -3,12 +3,12 @@ const nodemailer = require("nodemailer");
 const template =
   "/home/prologic/Desktop/project/Node-Project/templates/successRegister.html";
 
- /**
- * @method POST
- * @api 
- * @description
- *  - Specify billing split criteria for sessions involving given users
- */
+/**
+* @method POST
+* @api 
+* @description
+*  - Specify billing split criteria for sessions involving given users
+*/
 
 
 
@@ -36,12 +36,12 @@ const post = async (req, res) => {
         secure: false,
         requireTLS: true,
         auth: {
-          user: "umesh.atrii0712@gmail.com",
-          pass: "zscojnmjdcbisfwo",
+          user: 'teamoyo321@gmail.com',
+          pass: process.env.EMAILSecurity,
         },
       });
       var message = {
-        from: "umesh.atrii0712@gmail.com",
+        from: 'teamoyo321@gmail.com',
         // to: req.body.email,
         to: "tushar@prologictechnologies.in",
         // html: `  <!DOCTYPE html>
