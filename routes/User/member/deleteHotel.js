@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
 
   const dataa = await hotelDetails.find({ ownerId: req.user._id });
 
-  if (dataa.length === 0) {
+  if (dataa.length === 0 && req?.user?.role !== 'superAdmin') {
     await userSchema.findByIdAndUpdate(req.user._id, {
       $set: {
         role: "customer",
