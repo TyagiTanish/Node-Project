@@ -4,7 +4,7 @@ const userSchema = require("../../../../models/UserLogin/userSchema");
 module.exports = async (req, res) => {
   const user = req.user;
   const data = await hotelDetails.find({ ownerId: user._id });
-  if (data.length === 0) {
+  if (data.length === 0 && req?.user?.role !== 'superAdmin') {
     const result = await userSchema.findByIdAndUpdate(user._id, {
       role: "customer",
     });
