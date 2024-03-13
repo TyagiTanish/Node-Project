@@ -3,14 +3,18 @@ module.exports = async (req, res) => {
   try {
     if (!req.id) {
       if (Object.keys(req.query).length === 0) {
-        const data = await hotelDetails.find({}).populate("ownerId");
+        const data = await hotelDetails
+          .find({ availability: true })
+          .populate("ownerId");
         res.send(data);
       } else {
         const search = req.query.search;
         const price = req.query.price;
         const category = req.query.category;
         if (search === "" || search === undefined) {
-          const data = await hotelDetails.find({}).populate("ownerId");
+          const data = await hotelDetails
+            .find({ availability: true })
+            .populate("ownerId");
           if (price) {
             const hotels = data.filter((hotel) => {
               const rooms = hotel?.rooms.map((room) => {
@@ -82,6 +86,7 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
 
@@ -130,6 +135,7 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
 
@@ -163,6 +169,7 @@ module.exports = async (req, res) => {
                 .find({
                   "location.latitude": { $regex: latitude, $options: "i" },
                   "location.longitude": { $regex: longitude, $options: "i" },
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
               // res.send(data);
