@@ -7,7 +7,6 @@ module.exports = async (req, res) => {
       const loggedInUser = await userDetails.findOne({ _id: req?.body?.loggedInUserId })
       const user = await userDetails.findOne({ _id: req?.body?.userId })
       if (loggedInUser?.role === 'superAdmin') {
-        console.log('hello')
         const loginCred = new userDetails({
           email: user?.email,
           // password: user.password,
