@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
       rooms: [],
       amenities: req.body.amenities,
       discription: req.body.discription,
+      fulladdress: `${req.body.city},${req.body.state}, ${req.body.country}`
     });
     data.save();
     res.json({ test: true });

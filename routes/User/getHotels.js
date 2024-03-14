@@ -138,7 +138,6 @@ module.exports = async (req, res) => {
                   $and: [{ availability: true }],
                 })
                 .populate("ownerId");
-
               if (category) {
                 const categoryHotels = hotels.filter((hotel) => {
                   const rooms = hotel?.rooms.map((room, index) => {
