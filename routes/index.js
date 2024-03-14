@@ -85,6 +85,8 @@ router.put('/memberDelete/:id', extractParam("id"), memberDelete)
 
 router.put('/memberUpdate/:id', extractParam("id"), updateMember)
 
+
+router.put('/memberUpdate/:id', extractParam("id"), updateMember)
 router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);
