@@ -33,18 +33,18 @@ module.exports = async (req, res) => {
           }
         } else {
           if (typeof search == "string") {
-
             if (price) {
-
               const data = await hotelDetails
                 .find({
                   $or: [
                     { hotelName: { $regex: search, $options: "i" } },
                     { city: { $regex: search, $options: "i" } },
                     { state: { $regex: search, $options: "i" } },
+                    { fulladdress: { $regex: search, $options: "i" } },
                   ],
                 })
                 .populate("ownerId");
+
               const hotels = data.filter((hotel) => {
                 const rooms = hotel?.rooms.map((room) => {
                   if (
@@ -68,16 +68,14 @@ module.exports = async (req, res) => {
                     { hotelName: { $regex: search, $options: "i" } },
                     { city: { $regex: search, $options: "i" } },
                     { state: { $regex: search, $options: "i" } },
+                    { fulladdress: { $regex: search, $options: "i" } },
                   ],
                 })
                 .populate("ownerId");
+
               res.send(data);
-
             }
-
           } else if (typeof search === "object") {
-
-
             if (price) {
               const latitude = Math.floor(search.latitude);
               const longitude = Math.floor(search.longitude);
@@ -140,4 +138,4 @@ module.exports = async (req, res) => {
     console.log(error);
     res.send(error);
   }
-}
+};

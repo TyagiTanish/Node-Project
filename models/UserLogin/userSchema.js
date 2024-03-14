@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema(
     },
     role:{
       type:String,
+    },
+    isDeleted:{
+      type:String,
+      default:false,
     }
   },
   { timestamps: true }

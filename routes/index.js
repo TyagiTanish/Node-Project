@@ -37,6 +37,8 @@ const updateArrival = require("./User/member/updateArrival");
 const GetReciept = require("./Reciept/GetReciept");
 const getData = require("./User/member/getData");
 const GetReminders = require("./User/member/GetReminders");
+const memberDelete = require("./User/member/memberDelete");
+const updateMember = require("./User/member/updateMember");
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
@@ -78,6 +80,8 @@ router.get(
   extractParam("id"),
   getHotelForParticularMember
 );
+router.put('memberUpdate/:id', extractParam('id'),updateMember);
+router.put('/memberDelete/:id', extractParam("id"),memberDelete)
 router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);

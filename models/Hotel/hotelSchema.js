@@ -74,6 +74,9 @@ const hotelSchema = new mongoose.Schema(
       type: String,
       default: true,
     },
+    fulladdress:{
+      type:String
+    }
   },
 
   { timestamps: true }
