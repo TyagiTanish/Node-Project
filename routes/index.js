@@ -80,12 +80,15 @@ router.get(
   extractParam("id"),
   getHotelForParticularMember
 );
-router.put('memberUpdate/:id', extractParam('id'),updateMember);
-router.put('/memberDelete/:id', extractParam("id"),memberDelete)
+router.put('/memberDelete/:id', extractParam("id"), memberDelete)
+
+
+router.put('/memberUpdate/:id', extractParam("id"), updateMember)
+
 router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);
 router.get("/viewReciept", GetReciept);
 router.get('/getReminders', GetReminders)
 
-module.exports = router;
+module.exports = router
