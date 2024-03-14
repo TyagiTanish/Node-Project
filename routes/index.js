@@ -86,6 +86,6 @@ router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);
 router.get("/viewReciept", GetReciept);
-router.get('/getReminders',GetReminders)
+router.get('/getReminders', GetReminders)
 
 module.exports = router;

@@ -3,14 +3,18 @@ module.exports = async (req, res) => {
   try {
     if (!req.id) {
       if (Object.keys(req.query).length === 0) {
-        const data = await hotelDetails.find({}).populate("ownerId");
+        const data = await hotelDetails
+          .find({ availability: true })
+          .populate("ownerId");
         res.send(data);
       } else {
         const search = req.query.search;
         const price = req.query.price;
-
+        const category = req.query.category;
         if (search === "" || search === undefined) {
-          const data = await hotelDetails.find({}).populate("ownerId");
+          const data = await hotelDetails
+            .find({ availability: true })
+            .populate("ownerId");
           if (price) {
             const hotels = data.filter((hotel) => {
               const rooms = hotel?.rooms.map((room) => {
@@ -27,9 +31,49 @@ module.exports = async (req, res) => {
                 return hotel;
               }
             });
-            res.send(hotels);
+            if (category) {
+              const categoryHotels = hotels.filter((hotel) => {
+                const rooms = hotel?.rooms.map((room, index) => {
+                  if (
+                    room?.roomType === category[0]?.name ||
+                    room?.roomType === category[1]?.name ||
+                    room?.roomType === category[2]?.name
+                  ) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                });
+                if (rooms.includes(true)) {
+                  return hotel;
+                }
+              });
+              res.send(categoryHotels);
+            } else {
+              res.send(hotels);
+            }
           } else {
-            res.send(data);
+            if (category) {
+              const categoryHotels = hotels.filter((hotel) => {
+                const rooms = hotel?.rooms.map((room, index) => {
+                  if (
+                    room?.roomType === category[0]?.name ||
+                    room?.roomType === category[1]?.name ||
+                    room?.roomType === category[2]?.name
+                  ) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                });
+                if (rooms.includes(true)) {
+                  return hotel;
+                }
+              });
+              res.send(categoryHotels);
+            } else {
+              res.send(data);
+            }
           }
         } else {
           if (typeof search == "string") {
@@ -42,6 +86,7 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
 
@@ -60,7 +105,27 @@ module.exports = async (req, res) => {
                   return hotel;
                 }
               });
-              res.send(hotels);
+              if (category) {
+                const categoryHotels = hotels.filter((hotel) => {
+                  const rooms = hotel?.rooms.map((room, index) => {
+                    if (
+                      room?.roomType === category[0]?.name ||
+                      room?.roomType === category[1]?.name ||
+                      room?.roomType === category[2]?.name
+                    ) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  });
+                  if (rooms.includes(true)) {
+                    return hotel;
+                  }
+                });
+                res.send(categoryHotels);
+              } else {
+                res.send(hotels);
+              }
             } else {
               const data = await hotelDetails
                 .find({
@@ -70,10 +135,30 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
-
-              res.send(data);
+              if (category) {
+                const categoryHotels = hotels.filter((hotel) => {
+                  const rooms = hotel?.rooms.map((room, index) => {
+                    if (
+                      room?.roomType === category[0]?.name ||
+                      room?.roomType === category[1]?.name ||
+                      room?.roomType === category[2]?.name
+                    ) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  });
+                  if (rooms.includes(true)) {
+                    return hotel;
+                  }
+                });
+                res.send(categoryHotels);
+              } else {
+                res.send(data);
+              }
             }
           } else if (typeof search === "object") {
             if (price) {
@@ -83,6 +168,7 @@ module.exports = async (req, res) => {
                 .find({
                   "location.latitude": { $regex: latitude, $options: "i" },
                   "location.longitude": { $regex: longitude, $options: "i" },
+                  $and: [{ availability: true }],
                 })
                 .populate("ownerId");
               // res.send(data);
@@ -101,7 +187,27 @@ module.exports = async (req, res) => {
                   return hotel;
                 }
               });
-              res.send(hotels);
+              if (category) {
+                const categoryHotels = hotels.filter((hotel) => {
+                  const rooms = hotel?.rooms.map((room, index) => {
+                    if (
+                      room?.roomType === category[0]?.name ||
+                      room?.roomType === category[1]?.name ||
+                      room?.roomType === category[2]?.name
+                    ) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  });
+                  if (rooms.includes(true)) {
+                    return hotel;
+                  }
+                });
+                res.send(categoryHotels);
+              } else {
+                res.send(hotels);
+              }
             } else {
               const latitude = Math.floor(search.latitude);
               const longitude = Math.floor(search.longitude);
@@ -111,7 +217,27 @@ module.exports = async (req, res) => {
                   "location.longitude": { $regex: longitude, $options: "i" },
                 })
                 .populate("ownerId");
-              res.send(data);
+              if (category) {
+                const categoryHotels = hotels.filter((hotel) => {
+                  const rooms = hotel?.rooms.map((room, index) => {
+                    if (
+                      room?.roomType === category[0]?.name ||
+                      room?.roomType === category[1]?.name ||
+                      room?.roomType === category[2]?.name
+                    ) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  });
+                  if (rooms.includes(true)) {
+                    return hotel;
+                  }
+                });
+                res.send(categoryHotels);
+              } else {
+                res.send(data);
+              }
             }
           }
         }
