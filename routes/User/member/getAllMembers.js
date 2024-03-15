@@ -8,7 +8,7 @@ const userDetails = require("../../../models/UserLogin/userSchema");
  */
 
 module.exports = async (req, res) => {
-  const data = await userDetails.find({ role: "member" });
+  const data = await userDetails.find({ role: "member" , isDeleted: 'false'});
   res.send(data);
   //   console.log(data);
 };
