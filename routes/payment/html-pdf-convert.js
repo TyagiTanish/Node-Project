@@ -14,7 +14,7 @@ module.exports = async (template, key) => {
   const buffer = new Promise((resolve, reject) => {
     htmlPdf.create(file, options).toBuffer(function (err, res) {
       if (err) {
-        console.log({ err });
+        // console.log({ err });
         reject(err);
       } else {
         resolve(res);

@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
     if (!req.id) {
       if (Object.keys(req.query).length === 0) {
         const data = await hotelDetails
-          .find({ availability: true })
+          .find({ availability: true , isDeleted:'false'})
           .populate("ownerId");
         res.send(data);
       } else {
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         const category = req.query.category;
         if (search === "" || search === undefined) {
           const data = await hotelDetails
-            .find({ availability: true })
+            .find({ availability: true , isDeleted:'false'})
             .populate("ownerId");
           if (price) {
             const hotels = data.filter((hotel) => {
@@ -86,8 +86,8 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
-                  $and: [{ availability: true }],
-                })
+                  $and: [{ availability: true ,  isDeleted:'false' }],
+                } )
                 .populate("ownerId");
 
               const hotels = data.filter((hotel) => {
@@ -135,7 +135,7 @@ module.exports = async (req, res) => {
                     { state: { $regex: search, $options: "i" } },
                     { fulladdress: { $regex: search, $options: "i" } },
                   ],
-                  $and: [{ availability: true }],
+                  $and: [{ availability: true , isDeleted:'false' }],
                 })
                 .populate("ownerId");
               if (category) {
@@ -168,7 +168,7 @@ module.exports = async (req, res) => {
                 .find({
                   "location.latitude": { $regex: latitude, $options: "i" },
                   "location.longitude": { $regex: longitude, $options: "i" },
-                  $and: [{ availability: true }],
+                  $and: [{ availability: true , isDeleted:'false' }],
                 })
                 .populate("ownerId");
               // res.send(data);
