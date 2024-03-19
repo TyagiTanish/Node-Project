@@ -12,52 +12,52 @@ const BookingInvoiceNodemailer = require("../../payment/BookingInvoiceNodemailer
 
 
 
-module.exports=async(req,res)=>{
-    const user=req.user;
-    const id=req.id;
+module.exports = async (req, res) => {
+    const user = req.user;
+    const id = req.id;
 
-    const data= await bookings.findByIdAndUpdate(id,{
-        status:"accepted"
+    const data = await bookings.findByIdAndUpdate(id, {
+        status: "accepted"
     }).populate('ownerId').populate('hotelId').populate('userId')
-    
-// Update the Quantity of Available Rooms 
 
-let roomId = data?.roomId;
-let hotelId = data?.hotelId;
+    // Update the Quantity of Available Rooms 
 
-const hotel = await hotelDetails.findOne({_id:hotelId});
+    let roomId = data?.roomId;
+    let hotelId = data?.hotelId;
 
-let rooms = hotel?.rooms?.map((room)=>{
-    if(room?._id === roomId){
-        let roomQuantity = +room?.roomQuantity - +data?.totalRooms;
-        room.roomQuantity = String(roomQuantity) 
-    }   
-    return room
-})
+    const hotel = await hotelDetails.findOne({ _id: hotelId });
 
-await hotelDetails.updateOne({_id:hotelId},{
-    $set:{
-        rooms:rooms
-    }
-})
+    let rooms = hotel?.rooms?.map((room) => {
+        if (room?._id === roomId) {
+            let roomQuantity = +room?.roomQuantity - +data?.totalRooms;
+            room.roomQuantity = String(roomQuantity)
+        }
+        return room
+    })
 
-    const paymentDetails = await payments.findOne({bookingId:id})
+    await hotelDetails.updateOne({ _id: hotelId }, {
+        $set: {
+            rooms: rooms
+        }
+    })
+
+    const paymentDetails = await payments.findOne({ bookingId: id })
     const hotelName = data?.hotelId?.hotelName;
     const email = data?.email;
     const phone = data?.phone;
     const addressLine1 = `${data?.hotelId?.city},${data?.hotelId?.state}`;
-    const  addressLine2 = `${data?.hotelId?.pinCode},${data?.hotelId?.country}`;            
+    const addressLine2 = `${data?.hotelId?.pinCode},${data?.hotelId?.country}`;
     const transactionId = paymentDetails?.transactionId;
     const date = Date.now();
-    const value = data?.hotelId?.rooms.find((room)=>(String(room?._id) === String(data?.roomId)))
+    const value = data?.hotelId?.rooms.find((room) => (String(room?._id) === String(data?.roomId)))
     var name = data?.fullName;
     var roomType = value?.roomType;
     var amount = value?.price;
     var totalRooms = data?.totalRooms;
     var days = data?.totalDays;
-    var totalRoomPrice = amount*totalRooms*days;
-    BookingInvoiceNodemailer(hotelName,addressLine1,addressLine2,transactionId,date,roomType,amount,totalRooms,days,phone,email,name,totalRoomPrice);
+    var totalRoomPrice = amount * totalRooms * days;
+    BookingInvoiceNodemailer(hotelName, addressLine1, addressLine2, transactionId, date, roomType, amount, totalRooms, days, phone, email, name, totalRoomPrice);
 
-    const result=await bookings.find({ownerId:user._id,status:"pending"});
+    const result = await bookings.find({ ownerId: user._id, status: "pending" });
     res.send(result)
 }
