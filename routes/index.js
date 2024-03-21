@@ -34,6 +34,7 @@ const getHotelForParticularMember = require("./Hotels/getHotelsForParticularMemb
 const getAllUsers = require("./User/member/getAllUsers");
 const updateAmeneties = require("./User/member/updateAmeneties");
 const updateArrival = require("./User/member/updateArrival");
+const updatePaymentStatus = require("./User/member/updatePaymentStatus");
 const GetReciept = require("./Reciept/GetReciept");
 const getData = require("./User/member/getData");
 const GetReminders = require("./User/member/GetReminders");
@@ -80,17 +81,16 @@ router.get(
   extractParam("id"),
   getHotelForParticularMember
 );
-router.put('/memberDelete/:id', extractParam("id"), memberDelete)
+router.put("/memberDelete/:id", extractParam("id"), memberDelete);
 
+router.put("/memberUpdate/:id", extractParam("id"), updateMember);
 
-router.put('/memberUpdate/:id', extractParam("id"), updateMember)
-
-
-router.put('/memberUpdate/:id', extractParam("id"), updateMember)
+router.put("/memberUpdate/:id", extractParam("id"), updateMember);
 router.put("/setHotelAvailability", auth, hotelAvalability);
 router.get("/getData", auth, getData);
 router.put("/updateArrival/:id", extractParam("id"), updateArrival);
+router.put("/updatePaymentStatus/:id", extractParam("id"), updatePaymentStatus);
 router.get("/viewReciept", GetReciept);
-router.get('/getReminders', GetReminders)
+router.get("/getReminders", GetReminders);
 
-module.exports = router
+module.exports = router;
