@@ -12,28 +12,57 @@ const PaymentReceiptNodemailer = require("./PaymentReceiptNodemailer");
 
 module.exports = async (req, res) => {
 
-    const { transactionId, amount_captured, bookingId } = req.body;
-    try {
-        const result = new payments({
-            transactionId,
-            amount: amount_captured,
-            bookingId,
-            userId: req.user._id
-        })
-        await result.save();
-        await bookings.findByIdAndUpdate({ _id: bookingId }, {
-            $set: {
-                paymentStatus: 'paid'
-            }
-        })
-        const bookingDetails = await bookings.findOne({ _id: bookingId });
-        const email = bookingDetails?.email
-        const name = bookingDetails?.fullName
-        // await PaymentReceiptNodemailer(email,name,transactionId,amount_captured,'card','paid');
-        res.send('success')
-    } catch (error) {
-        res.send(error)
+    if (req?.body?.transactionId) {
+        const { transactionId, amount_captured, bookingId } = req.body;
+        try {
+            const result = new payments({
+                transactionId,
+                amount: amount_captured,
+                bookingId,
+                userId: req.user._id,
+                type: 'card'
+            })
+          const data=  await result.save();
+            
+            await bookings.findByIdAndUpdate({ _id: bookingId }, {
+                $set: {
+                    paymentStatus: 'paid',
+                   paymentId:data._id
+                }
+            })
+            
+            const bookingDetails = await bookings.findOne({ _id: bookingId });
+            const email = bookingDetails?.email
+            const name = bookingDetails?.fullName
+            // await PaymentReceiptNodemailer(email,name,transactionId,amount_captured,'card','paid');
+            res.send('success')
+        } catch (error) {
+            res.send(error)
+        }
+    } else {
+        const { amount_captured, bookingId, type } = req.body;
+        try {
+            const result = new payments({
+                amount: amount_captured,
+                bookingId,
+                userId: req.user._id,
+                type: type
+            })
+           
+            const data=  await result.save();
+            
+            await bookings.findByIdAndUpdate({ _id: bookingId }, {
+                $set: {
+                    paymentStatus: 'unpaid',
+                   paymentId:data?._id
+                }
+            })
+              res.send('success')
+        } catch (error) {
+            res.send(error)
+        }
     }
+
 
 
 }
