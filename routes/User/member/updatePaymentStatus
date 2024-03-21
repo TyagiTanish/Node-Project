@@ -1,0 +1,12 @@
+const bookings = require("../../../models/Billing/bookingSchema");
+
+module.exports = async (req, res) => {
+  try {
+    await bookings.findByIdAndUpdate(req.id, {
+      paymentStatus: req.body.value,
+    });
+    res.send(true);
+  } catch (error) {
+    res.send(error);
+  }
+};
