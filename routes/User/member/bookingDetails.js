@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     try {
         if (Object.keys(req.query).length === 0) {
             const user = req.user;
-            const result = await bookings.find({ ownerId: user._id, status: "pending" }).populate("hotelId");
+            const result = await bookings.find({ ownerId: user._id, status: "pending" }).populate("hotelId").populate("paymentId");
 
             const data = result.filter((item) => {
                 return item.hotelId != null
@@ -31,7 +31,8 @@ module.exports = async (req, res) => {
                 const result = await bookings.find({ ownerId: user._id, status: "pending" }).limit(limit)
                     .skip(limit * page)
                     .sort({ [orderby]: sortby })
-                    .populate("hotelId");
+                    .populate("hotelId")
+                    .populate("paymentId");
                 const data = result.filter((item) => {
                     return item.hotelId != null
                 })
@@ -53,7 +54,8 @@ module.exports = async (req, res) => {
                     .skip(limit * page)
                     .sort({ [orderby]: sortby })
 
-                    .populate("hotelId");
+                    .populate("hotelId")
+                    .populate("paymentId");
                 const data = result.filter((item) => {
                     return item.hotelId != null
                 })

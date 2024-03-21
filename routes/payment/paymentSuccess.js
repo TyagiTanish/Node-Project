@@ -22,12 +22,15 @@ module.exports = async (req, res) => {
                 userId: req.user._id,
                 type: 'card'
             })
-            await result.save();
+          const data=  await result.save();
+            
             await bookings.findByIdAndUpdate({ _id: bookingId }, {
                 $set: {
-                    paymentStatus: 'paid'
+                    paymentStatus: 'paid',
+                   paymentId:data._id
                 }
             })
+            
             const bookingDetails = await bookings.findOne({ _id: bookingId });
             const email = bookingDetails?.email
             const name = bookingDetails?.fullName
@@ -45,8 +48,16 @@ module.exports = async (req, res) => {
                 userId: req.user._id,
                 type: type
             })
-            await result.save();
-            res.send('success')
+           
+            const data=  await result.save();
+            
+            await bookings.findByIdAndUpdate({ _id: bookingId }, {
+                $set: {
+                    paymentStatus: 'unpaid',
+                   paymentId:data?._id
+                }
+            })
+              res.send('success')
         } catch (error) {
             res.send(error)
         }
