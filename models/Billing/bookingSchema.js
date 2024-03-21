@@ -85,6 +85,11 @@ const bookingSchema = new mongoose.Schema({
   reminder:{
     type:String,
     default:'false'
+  },
+  paymentId:{
+    type: mongoose.Types.ObjectId,
+    ref: "payments",
+    default:null
   }
 });
 const bookings = mongoose.model("bookings", bookingSchema);
