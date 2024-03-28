@@ -40,9 +40,13 @@ const getData = require("./User/member/getData");
 const GetReminders = require("./User/member/GetReminders");
 const memberDelete = require("./User/member/memberDelete");
 const updateMember = require("./User/member/updateMember");
+const allBookings = require('./User/member/AllBookings')
+
+
 router.use("/auth", authentication);
 router.use("/register", user);
 router.get("/getUserData", extractParam("authToken"), auth, get);
+router.get('/allBookings', auth, allBookings)
 router.put("/username/:id", extractParam("id"), username);
 router.put("/password/:id", extractParam("id"), password);
 router.get("/getInfo/:id", extractParam("id"), auth, getInfo);
