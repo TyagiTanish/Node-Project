@@ -24,7 +24,6 @@ const post = async (req, res) => {
         totalRooms,
         roomId,
         price,
-        currency
       },
       hotelId,
     } = req.body;
@@ -46,10 +45,8 @@ const post = async (req, res) => {
       hotelId,
       userId: req.user._id,
       ownerId: ownerId.ownerId,
-      currency
     });
     const id = await result.save();
-   
     return res.send({ message: "Data Entered Successfull", bookingId: id._id });
   } catch (err) {
     res.send(err);

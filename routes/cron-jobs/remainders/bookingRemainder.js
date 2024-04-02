@@ -5,28 +5,27 @@ const bookingRemainderMail = require('./bookingRemainderMail')
 
 module.exports = () => {
   const remainder = (Bookings) => {
-    Bookings.map(async(booking) => {
-      const bookingDate = new Date(booking?.bookFrom).getDate();
+
+    Bookings.map(async (booking) => {
+      const bookingDate = booking?.bookFrom.split(" ");
+      const bookingDay = parseInt(bookingDate[1]);
       const curretDate = new Date(Date.now()).getDate();
-
       if (
-        booking?.status != "Canceled" &&
-        booking?.status != "pending" &&
-        booking?.status != "rejected"
+        booking?.status === 'accepted' && booking?.reminder === 'false'
       ) {
-          if (bookingDate - curretDate <= 1 && bookingDate - curretDate >= 0) {
-            bookingRemainderMail()
-            await bookings?.findByIdAndUpdate({_id:booking._id},{
-                $set:{
-                  reminder:'true'
-                }
-              })
+        if (bookingDay - curretDate <= 1 && bookingDay - curretDate >= 0) {
+          bookingRemainderMail()
+          await bookings?.findByIdAndUpdate({ _id: booking._id }, {
+            $set: {
+              reminder: 'true'
+            }
+          })
 
-          }
+        }
       }
     });
   };
-  cron.schedule("0 * * * *", async () => {
+  cron.schedule("0 * * * *", async () => {                 //0 * * * *
     const Bookings = await bookings.find();
     remainder(Bookings);
   });
