@@ -90,6 +90,10 @@ const bookingSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "payments",
     default:null
+  },
+  currency:{
+    type:String,
+    default:""
   }
 });
 const bookings = mongoose.model("bookings", bookingSchema);
