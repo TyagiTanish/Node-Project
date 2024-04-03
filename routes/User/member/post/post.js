@@ -8,6 +8,7 @@ module.exports = async (req, res) => {
       email: req.body.email,
       phone: req.body.phone,
       password: req.body.password,
+      currency: "INR",
       role: "member",
     });
     user.save();
@@ -23,7 +24,7 @@ module.exports = async (req, res) => {
       rooms: [],
       amenities: req.body.amenities,
       discription: req.body.discription,
-      fulladdress: `${req.body.city},${req.body.state}, ${req.body.country}`
+      fulladdress: `${req.body.city},${req.body.state}, ${req.body.country}`,
     });
     data.save();
     res.json({ test: true });

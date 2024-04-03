@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const encrypt = require("./pre/save");
 // const methods = require("./methods");
-const methods = require('./methods')
+const methods = require("./methods");
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -16,17 +16,21 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    currency: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
     },
-    role:{
-      type:String,
+    role: {
+      type: String,
     },
-    isDeleted:{
-      type:String,
-      default:false,
-    }
+    isDeleted: {
+      type: String,
+      default: false,
+    },
   },
   { timestamps: true }
 );
