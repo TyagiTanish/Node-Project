@@ -21,13 +21,18 @@ const post = async (req, res) => {
         rooms: [],
       });
       result.save();
-      const putData = await userSchema.findByIdAndUpdate(data._id, {
-        role: role,
-      });
+     
       if (data.role === "customer") {
-        putData();
+       
+         await userSchema.findByIdAndUpdate(data._id, {
+          role: role,
+        });
+        res.send(true);
       }
-      res.send("Data Entered:)");
+   
+   else{
+    res.send(true);
+   }
    
     }
   } catch (err) {
