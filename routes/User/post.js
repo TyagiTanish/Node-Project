@@ -4,22 +4,21 @@ const template =
   "/home/prologic/Desktop/project/Node-Project/templates/successRegister.html";
 
 /**
-* @method POST
-* @api 
-* @description
-*  - Specify billing split criteria for sessions involving given users
-*/
-
-
-
+ * @method POST
+ * @api
+ * @description
+ *  - Specify billing split criteria for sessions involving given users
+ */
 
 const post = async (req, res) => {
+  console.log(req.body);
   try {
     const role = "customer";
     const result = await new userSchema({
       name: req.body.name,
       email: req.body.email,
       phone: req.body.phone,
+      currency: req.body.currency,
       password: req.body.password,
       role: role,
     });
@@ -36,12 +35,12 @@ const post = async (req, res) => {
         secure: false,
         requireTLS: true,
         auth: {
-          user: 'teamoyo321@gmail.com',
+          user: "teamoyo321@gmail.com",
           pass: process.env.EMAILSecurity,
         },
       });
       var message = {
-        from: 'teamoyo321@gmail.com',
+        from: "teamoyo321@gmail.com",
         // to: req.body.email,
         to: "tushar@prologictechnologies.in",
         // html: `  <!DOCTYPE html>
