@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
     if (!req.id) {
       if (Object.keys(req.query).length === 0) {
         const data = await hotelDetails
-          .find({ availability: true , isDeleted:'false'})
+          .find({ availability: true, isDeleted: 'false' })
           .populate("ownerId");
         res.send(data);
       } else {
@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
         const category = req.query.category;
         if (search === "" || search === undefined) {
           const data = await hotelDetails
-            .find({ availability: true , isDeleted:'false'})
+            .find({ availability: true, isDeleted: 'false' })
             .populate("ownerId");
-          if(data.length){
+          if (data.length) {
             if (price) {
               const hotels = data.filter((hotel) => {
                 const rooms = hotel?.rooms.map((room) => {
@@ -77,12 +77,13 @@ module.exports = async (req, res) => {
                 res.send(data);
               }
             }
-    
+
           }
           else{
               res.send(false)
+
           }
-        
+
         } else {
           if (typeof search == "string") {
          
@@ -104,8 +105,6 @@ module.exports = async (req, res) => {
             
             if(check.length){
               if (price) {
-         
-      
                 const hotels = data.filter((hotel) => {
                   const rooms = hotel?.rooms.map((room) => {
                     if (
@@ -187,8 +186,6 @@ module.exports = async (req, res) => {
           res.send(false)
         }
          
-           
-        
           
           } else if (typeof search === "object") {
             const latitude = Math.floor(search.latitude);
@@ -286,7 +283,6 @@ module.exports = async (req, res) => {
             else{
                 res.send(false)
             }
-       
           }
         }
       }
@@ -297,8 +293,13 @@ module.exports = async (req, res) => {
       } else {
         const search = req.query.search;
         if (search === "") {
-          const data = await hotelDetails.find({ _id: req.id });
-          res.send(data);
+          if (req.id) {
+            const data = await hotelDetails.find({ _id: req.id });
+            res.send(data);
+          } else {
+            const data = await hotelDetails.find();
+            res.send(data);
+          }
         } else {
           const data = await hotelDetails.find({
             _id: req.id,
