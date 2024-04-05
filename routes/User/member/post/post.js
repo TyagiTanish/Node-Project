@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
       country: req.body.country,
       pinCode: req.body.pinCode,
       rooms: [],
-      amenities: req.body.amenities,
+      amenities: JSON.parse(req.body.amenities),
       discription: req.body.discription,
       fulladdress: `${req.body.city},${req.body.state}, ${req.body.country}`
     });

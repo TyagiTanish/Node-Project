@@ -20,13 +20,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    role:{
-      type:String,
+    role: {
+      type: String,
     },
-    isDeleted:{
-      type:String,
-      default:false,
-    }
+    isDeleted: {
+      type: String,
+      default: false,
+    },
+    dashboard: []
   },
   { timestamps: true }
 );
