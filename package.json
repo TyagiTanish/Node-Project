@@ -30,5 +30,8 @@
     "razorpay": "^2.9.2",
     "socket.io": "^4.7.4",
     "stripe": "^14.13.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.3"
   }
 }

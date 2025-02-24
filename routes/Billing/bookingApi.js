@@ -5,7 +5,7 @@ const hotelDetails = require("../../models/Hotel/hotelSchema");
  *
  * @method  POST
  * @api  /bookRoom
- * @description
+ * @description This function handles booking requests.
  */
 
 const post = async (req, res) => {
